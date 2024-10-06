@@ -1,10 +1,10 @@
 from config import OWNER_ID
 import asyncio
 from pyrogram import Client, filters
-from ZeMusic.utils.database import get_assistant
+from YukkiMusic.utils.database import get_assistant
 from pyrogram.types import Message
-from ZeMusic import (Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app)
-from ZeMusic.core.call import Mody
+from YukkiMusic import (Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app)
+from YukkiMusic.core.call import Mody
 
 
 @app.on_message(filters.video_chat_started)
