@@ -29,7 +29,7 @@ RELOAD_COMMAND = get_command("RELOAD_COMMAND")
 REBOOT_COMMAND = get_command("REBOOT_COMMAND")
 
 
-@app.on_message(filters.command(RELOAD_COMMAND) & filters.group & ~BANNED_USERS)
+@app.on_message(filters.command(["/admincache", "/reload", "/refresh","ريلود"],"") & filters.group & ~BANNED_USERS)
 @language
 async def reload_admin_cache(client, message: Message, _):
     try:
@@ -50,7 +50,7 @@ async def reload_admin_cache(client, message: Message, _):
         )
 
 
-@app.on_message(filters.command(REBOOT_COMMAND) & filters.group & ~BANNED_USERS)
+@app.on_message(filters.command(["/reboot","ريبوت"],"") & filters.group & ~BANNED_USERS)
 @AdminActual
 async def restartbot(client, message: Message, _):
     mystic = await message.reply_text(
