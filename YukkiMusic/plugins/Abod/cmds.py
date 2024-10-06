@@ -9,7 +9,7 @@ from pyrogram.errors import MessageNotModified
 from YukkiMusic import app
 from config import OWNER_ID, START_IMG_URL
 import config
-Lnk= "https://t.me/" +config.CHANNEL_LINK
+lnk= "https://t.me/" +config.CHANNEL_LINK
 
 @app.on_message(filters.regex(r"^(اوامر الميوزك|ميوزك|الاوامر|الميوزك|اوامر ميوزك)$"))
 async def zdatsr(client: Client, message: Message):
@@ -34,7 +34,7 @@ async def zdatsr(client: Client, message: Message):
                         "اوامــر المطــور", callback_data="zzzdv"),
                 ],[
                     InlineKeyboardButton(
-                        text=config.CHANNEL_NAME, url=Lnk),
+                        text=config.CHANNEL_NAME, url=lnk),
                 ],
             ]
         ),
