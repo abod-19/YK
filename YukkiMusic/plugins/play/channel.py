@@ -22,7 +22,7 @@ from YukkiMusic.utils.decorators.admins import AdminActual
 CHANNELPLAY_COMMAND = get_command("CHANNELPLAY_COMMAND")
 
 
-@app.on_message(filters.command(CHANNELPLAY_COMMAND) & filters.group & ~BANNED_USERS)
+@app.on_message(filters.command(["/channelplay","ربط"],"") & filters.group & ~BANNED_USERS)
 @AdminActual
 async def playmode_(client, message: Message, _):
     if len(message.command) < 2:
@@ -30,7 +30,7 @@ async def playmode_(client, message: Message, _):
             _["cplay_1"].format(message.chat.title, CHANNELPLAY_COMMAND[0])
         )
     query = message.text.split(None, 2)[1].lower().strip()
-    if (str(query)).lower() == "disable":
+    if (str(query)).lower() == "تعطيل":
         await set_cmode(message.chat.id, None)
         return await message.reply_text("Channel Play Disabled")
     elif str(query) == "linked":
