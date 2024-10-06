@@ -24,7 +24,7 @@ from YukkiMusic.utils.inline import support_group_markup
 PING_COMMAND = get_command("PING_COMMAND")
 
 
-@app.on_message(filters.command(PING_COMMAND) & ~BANNED_USERS)
+@app.on_message(filters.command(["/ping","بنج", "/alive","البنج"],"") & ~BANNED_USERS)
 @language
 async def ping_com(client, message: Message, _):
     response = await message.reply_photo(
