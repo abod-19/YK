@@ -8,11 +8,11 @@
 # All rights reserved.
 #
 import math
-
+import config
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-
 from YukkiMusic.utils.formatters import time_to_seconds
 
+lnk= "https://t.me/" +config.CHANNEL_LINK
 
 def get_progress_bar(percentage):
     umm = math.floor(percentage)
@@ -54,23 +54,16 @@ def stream_markup_timer(_, videoid, chat_id, played, dur):
                 text=f"{played} {bar} {dur}",
                 callback_data="GetTimer",
             )
-        ],
-        [
-            InlineKeyboardButton(
-                text=_["P_B_7"], callback_data=f"add_playlist {videoid}"
-            ),
-            InlineKeyboardButton(
-                text=_["PL_B_3"],
-                callback_data=f"PanelMarkup {videoid}|{chat_id}",
-            ),
-        ],
-        [
+        ],[
             InlineKeyboardButton(text="▷", callback_data=f"ADMIN Resume|{chat_id}"),
             InlineKeyboardButton(text="II", callback_data=f"ADMIN Pause|{chat_id}"),
             InlineKeyboardButton(text="‣‣I", callback_data=f"ADMIN Skip|{chat_id}"),
             InlineKeyboardButton(text="▢", callback_data=f"ADMIN Stop|{chat_id}"),
+        ],[
+            InlineKeyboardButton(text=config.CHANNEL_NAME, url=lnk)
+        ],[
+            InlineKeyboardButton(text=_["CLOSEMENU_BUTTON"], callback_data="close")
         ],
-        [InlineKeyboardButton(text=_["CLOSEMENU_BUTTON"], callback_data="close")],
     ]
     return buttons
 
@@ -78,21 +71,15 @@ def stream_markup_timer(_, videoid, chat_id, played, dur):
 def stream_markup(_, videoid, chat_id):
     buttons = [
         [
-            InlineKeyboardButton(
-                text=_["P_B_7"], callback_data=f"add_playlist {videoid}"
-            ),
-            InlineKeyboardButton(
-                text=_["PL_B_3"],
-                callback_data=f"PanelMarkup None|{chat_id}",
-            ),
-        ],
-        [
             InlineKeyboardButton(text="▷", callback_data=f"ADMIN Resume|{chat_id}"),
             InlineKeyboardButton(text="II", callback_data=f"ADMIN Pause|{chat_id}"),
             InlineKeyboardButton(text="‣‣I", callback_data=f"ADMIN Skip|{chat_id}"),
             InlineKeyboardButton(text="▢", callback_data=f"ADMIN Stop|{chat_id}"),
+        ],[
+            InlineKeyboardButton(text=config.CHANNEL_NAME, url=lnk)
+        ],[
+            InlineKeyboardButton(text=_["CLOSEMENU_BUTTON"], callback_data="close")
         ],
-        [InlineKeyboardButton(text=_["CLOSEMENU_BUTTON"], callback_data="close")],
     ]
     return buttons
 
