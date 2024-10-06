@@ -19,9 +19,6 @@ lnk= "https://t.me/" +CHANNEL_LINK
 def start_pannel(_):
     buttons = [
         [
-            InlineKeyboardButton(
-                text="الأوامر", callback_data="zzzback"
-            ),
             InlineKeyboardButton(text=_["S_B_2"], callback_data="settings_helper"),
         ],
     ]
