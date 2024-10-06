@@ -57,7 +57,7 @@ from YukkiMusic.utils.inline.start import private_panel
 SETTINGS_COMMAND = get_command("SETTINGS_COMMAND")
 
 
-@app.on_message(filters.command(SETTINGS_COMMAND) & filters.group & ~BANNED_USERS)
+@app.on_message(filters.command(["/settings","الاعدادات","/setting"],"") & filters.group & ~BANNED_USERS)
 @language
 async def settings_mar(client, message: Message, _):
     buttons = setting_markup(_)
