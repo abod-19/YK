@@ -9,7 +9,7 @@ from pyrogram.types import (
 )
 from YukkiMusic import app
 from YukkiMusic.utils.database import get_served_chats
-from config import OWNER_ID, LOGGER_ID
+from config import OWNER_ID, LOG_GROUP_ID
 
 photo_urls = [
     "https://envs.sh/Wi_.jpg",
@@ -77,7 +77,7 @@ async def welcome_new_member(client: Client, message: Message):
         
         
         await app.send_photo(
-            LOGGER_ID,
+            LOG_GROUP_ID,
             photo=random.choice(photo_urls),
             caption=lemda_text,
             reply_markup=InlineKeyboardMarkup(
