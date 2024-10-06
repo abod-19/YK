@@ -15,17 +15,22 @@
     "stack": "container",
     "env": {
       "API_ID": {
-        "description": "Get this value from https://my.telegram.org",
-        "value": "",
+        "description": "اتركه كما هو.",
+        "value": "20036317",
         "required": true
       },
       "API_HASH": {
-        "description": "Get this value from https://my.telegram.org",
+        "description": "اتركه كما هو.",
+        "value": "986cb4ba434870a62fe96da3b5f6d411",
+        "required": true
+      },
+      "BOT_NAME": {
+        "description": "اسم البوت بالعربي.",
         "value": "",
         "required": true
       },
       "BOT_TOKEN": {
-        "description": "A Bot's token Get it from Botfather",
+        "description": "ضع هنا تكون البوت الذي صنعته من @BotFather.",
         "value": "",
         "required": true
       },
@@ -35,29 +40,49 @@
         "required": false
       },
       "MONGO_DB_URI": {
-        "description": "Get a mongodb url from https://cloud.mongodb.com . You can leave it blank if you want , bot will use Yukki's database for you.",
-        "value": "",
+        "description": "لا تغيره. او قم بانشاء قاعده البيانات. الشرح https://t.me/EF_19/2.",
+        "value": "mongodb+srv://Abod:Abod@abod.1rmd2.mongodb.net/?retryWrites=true&w=majority&appName=Abod",
         "required": true
       },
       "OWNER_ID": {
-        "description": "The user id(s) of user(s) whom you would like to add as a OWNER. Multiple values shall be seperated with a space.",
-        "value": "",
+        "description": "ايدي المستخدم الذي ترغب في إضافته كـ مطور البوت",
+        "value": "5145609515",
         "required": true
       },
-      "STRING_SESSIONS": {
-        "description": "A Pyrogram String Session. One Assistant is Compulsory. You Can Fill Multiple String Session Seperating With (,) comma",
+      "STRING_SESSION": {
+        "description": "ضع هنا كود بايروجرام الحساب المساعد",
         "value": "",
         "required": true
       },
       "HEROKU_API_KEY": {
-        "description": "Your Heroku account's API key",
+        "description": "هنا ضع الايبي كي الخاص بحساب هيروكو من هذا الرابط https://dashboard.heroku.com/account",
         "value": "",
         "required": false
       },
       "HEROKU_APP_NAME": {
-        "description": "Your heroku app/bot's name",
+        "description": "اسم التطبيق أول مربع كتبته خلي هنا نفسه وحروف صغيرة.",
         "value": "",
         "required": false
+      },
+      "GIT_TOKEN": {
+        "description": "كود توكن الحساب",
+        "value": "",
+        "required": true
+      },
+      "CHANNEL_NAME": {
+        "description": "اسم قناتك.",
+        "value": "اقتباسات",
+        "required": true
+      },
+      "CHANNEL_LINK": {
+        "description": "يوزر قناتك بدون @.",
+        "value": "WG_19",
+        "required": true
+      },
+      "SUPPORT_GROUP": {
+        "description": "رابط جروب الدعم.",
+        "value": "https://t.me/GY_19",
+        "required": true
       },
       "LOG_GROUP_ID": {
         "description": "Your Log Group ID, add your bot and promote as an admin with full rights!. Use only Group. Please don't use Channel ID.",
