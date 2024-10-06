@@ -10,8 +10,8 @@ from pyrogram.types import Message
 from youtubesearchpython import SearchVideos
 from yt_dlp import YoutubeDL
 from pyrogram.types import Message, InputTextMessageContent, InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup
-from ZeMusic.platforms.Youtube import cookie_txt_file
-from ZeMusic import app
+from YukkiMusic.platforms.Youtube import cookies
+from YukkiMusic import app
 import config
 
 lnk = "https://t.me/" + config.CHANNEL_LINK
@@ -73,7 +73,7 @@ async def ytmusic(client, message: Message):
         "outtmpl": "%(id)s.mp4",
         "logtostderr": False,
         "quiet": True,
-        "cookiefile": cookie_txt_file(),
+        "cookiefile": cookies(),
     }
     try:
         with YoutubeDL(opts) as ytdl:
