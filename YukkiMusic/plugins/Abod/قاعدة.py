@@ -10,8 +10,8 @@ from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram.errors import UserAlreadyParticipant
 import asyncio
 import random
-from ZeMusic.utils.database import add_served_chat
-from ZeMusic import app
+from YukkiMusic.utils.database import add_served_chat
+from YukkiMusic import app
 
 @app.on_message(filters.command(["ا", "هلا", "سلام", "المالك", "بخير", "وانت"],"") & filters.group)
 async def bot_check(_, message):
