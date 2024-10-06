@@ -37,16 +37,15 @@ from YukkiMusic.utils.logger import play_logs
 from YukkiMusic.utils.stream.stream import stream
 
 PLAY_COMMAND = get_command("PLAY_COMMAND")
+Nem = config.BOT_NAME + " شغل"
 
-
-@app.on_message(
-    filters.command(
-        PLAY_COMMAND,
-        prefixes=["/", "!", "%", ",", "@", "#"],
-    )
-    & filters.group
-    & ~BANNED_USERS
-)
+@app.on_message(filters.command(["play", "vplay", "cplay", "cvplay", "playforce", "vplayforce", "cplayforce", "cvplayforce",]) & filters.group & ~BANNED_USERS)
+@app.on_message(filters.command(
+    [
+        "تشغيل",
+        "شغل",
+        "فيديو",
+        Nem,],"") & filters.group & ~BANNED_USERS)
 @PlayWrapper
 async def play_commnd(
     client,
