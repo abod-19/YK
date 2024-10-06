@@ -216,14 +216,14 @@ async def del_back_playlist(client, CallbackQuery, _):
 
     elif command == "Skip":
         check = db.get(chat_id)
-        txt = f"» ᴛʀᴀᴄᴋ sᴋɪᴩᴩᴇᴅ ʙʏ {mention} !"
+        txt = f"⟡ تم التخطي \n\n⟡ بواسطة : {mention} 🥀"
         popped = None
         try:
             popped = check.pop(0)
             if popped:
                 await auto_clean(popped)
             if not check:
-                await CallbackQuery.edit_message_text(f"» ᴛʀᴀᴄᴋ sᴋɪᴩᴩᴇᴅ ʙʏ {mention} !")
+                await CallbackQuery.edit_message_text(f"⟡ تم التخطي \n\n⟡ بواسطة : {mention} 🥀")
                 await CallbackQuery.message.reply_text(
                     _["admin_10"].format(mention), disable_web_page_preview=True
                 )
@@ -233,7 +233,7 @@ async def del_back_playlist(client, CallbackQuery, _):
                     return
         except:
             try:
-                await CallbackQuery.edit_message_text(f"» ᴛʀᴀᴄᴋ sᴋɪᴩᴩᴇᴅ ʙʏ {mention} !")
+                await CallbackQuery.edit_message_text(f"⟡ تم التخطي \n\n⟡ بواسطة : {mention} 🥀")
                 await CallbackQuery.message.reply_text(
                     _["admin_10"].format(mention), disable_web_page_preview=True
                 )
