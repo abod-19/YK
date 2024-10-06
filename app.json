@@ -49,7 +49,7 @@
         "value": "5145609515",
         "required": true
       },
-      "STRING_SESSION": {
+      "STRING_SESSIONS": {
         "description": "ضع هنا كود بايروجرام الحساب المساعد",
         "value": "",
         "required": true
