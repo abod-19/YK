@@ -302,12 +302,12 @@ async def welcome(client, message: Message):
                 )
             if member.id in config.OWNER_ID:
                 return await message.reply_text(
-                    _["start_3"].format(app.mention, member.mention)
+                    _["start_3"].format(member.mention)
                 )
-            if member.id in SUDOERS:
-                return await message.reply_text(
-                    _["start_4"].format(app.mention, member.mention)
-                )
+            #if member.id in SUDOERS:
+                #return await message.reply_text(
+                    #_["start_4"].format(app.mention, member.mention)
+                #)
             return
         except:
 
