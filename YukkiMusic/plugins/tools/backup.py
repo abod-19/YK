@@ -60,7 +60,7 @@ async def edit_or_reply(mystic, text):
     return await app.send_message(mystic.chat.id, disable_web_page_preview=True)
 
 
-@app.on_message(filters.command("export") & ~BANNED_USERS)
+@app.on_message(filters.command(["تصدير", "export"]) & ~BANNED_USERS)
 async def export_database(client, message):
     if message.from_user.id not in OWNER_ID:
         return
@@ -127,7 +127,7 @@ async def export_database(client, message):
     await mystic.delete()
 
 
-@app.on_message(filters.command("import") & ~BANNED_USERS)
+@app.on_message(filters.command(["استيراد", "import"]) & ~BANNED_USERS)
 async def import_database(client, message):
     if message.from_user.id not in OWNER_ID:
         return
