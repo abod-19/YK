@@ -2,7 +2,7 @@ from SafoneAPI import SafoneAPI
 import requests
 from pyrogram import filters
 from pyrogram.enums import ChatAction, ParseMode
-from ZeMusic import app
+from YukkiMusic import app
 
 api = SafoneAPI()
 
