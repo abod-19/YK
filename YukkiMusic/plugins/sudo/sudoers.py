@@ -24,7 +24,7 @@ DELSUDO_COMMAND = get_command("DELSUDO_COMMAND")
 SUDOUSERS_COMMAND = get_command("SUDOUSERS_COMMAND")
 
 
-@app.on_message(filters.command(ADDSUDO_COMMAND) & filters.user(OWNER_ID))
+@app.on_message(filters.command(["رفع مطور"]) & filters.user(OWNER_ID))
 @language
 async def useradd(client, message: Message, _):
     if MONGO_DB_URI is None:
@@ -62,7 +62,7 @@ async def useradd(client, message: Message, _):
     return
 
 
-@app.on_message(filters.command(DELSUDO_COMMAND) & filters.user(OWNER_ID))
+@app.on_message(filters.command(["تنزيل مطور", "rmsudo"]) & filters.user(OWNER_ID))
 @language
 async def userdel(client, message: Message, _):
     if MONGO_DB_URI is None:
@@ -96,7 +96,7 @@ async def userdel(client, message: Message, _):
     await message.reply_text(f"sᴏᴍᴇᴛʜɪɴɢ ᴡʀᴏɴɢ ʜᴀᴘᴘᴇɴᴇᴅ.")
 
 
-@app.on_message(filters.command(SUDOUSERS_COMMAND) & ~BANNED_USERS)
+@app.on_message(filters.command(["المطورين", "listsudo", "sudoers"]) & ~BANNED_USERS)
 @language
 async def sudoers_list(client, message: Message, _):
     text = _["sudo_5"]
@@ -108,7 +108,7 @@ async def sudoers_list(client, message: Message, _):
             count += 1
         except Exception:
             continue
-        text += f"{count}➤ {user}\n"
+        text += f"{count} - {user}\n"
     smex = 0
     for user_id in SUDOERS:
         if user_id not in OWNER_ID:
@@ -119,7 +119,7 @@ async def sudoers_list(client, message: Message, _):
                     smex += 1
                     text += _["sudo_6"]
                 count += 1
-                text += f"{count}➤ {user} ({user_id})\n"
+                text += f"{count} - {user} ({user_id})\n"
             except Exception:
                 continue
     if not text:
