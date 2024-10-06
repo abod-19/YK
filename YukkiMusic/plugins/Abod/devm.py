@@ -6,6 +6,7 @@ from config import OWNER_ID, BOT_NAME
 import config
 
 lnk = "https://t.me/" + config.CHANNEL_LINK
+Nem = f"{config.BOT_NAME} المطور"
 
 @app.on_message(filters.regex(r"^(المطور|مطور)$"))
 async def devid(c: Client, m: Message):
