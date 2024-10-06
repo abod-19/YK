@@ -7,8 +7,8 @@ from pyrogram.types import (
     InputMediaVideo,
     Message,
 )
-from ZeMusic import app
-from ZeMusic.utils.database import get_served_chats
+from YukkiMusic import app
+from YukkiMusic.utils.database import get_served_chats
 from config import OWNER_ID, LOGGER_ID
 
 photo_urls = [
