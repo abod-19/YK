@@ -52,7 +52,7 @@ def dirr():
     if TEMP_DB_FOLDER not in listdir():
         mkdir(TEMP_DB_FOLDER)
 
-    logging.info("Directories Updated.")
+    logging.info("\n- جاري رفع تحديثات السورس ↻.")
 
 
 if __name__ == "__main__":
