@@ -1,5 +1,5 @@
 from pyrogram import filters, Client
-from ZeMusic import app
+from YukkiMusic import app
 import asyncio
 from pyrogram.types import VideoChatEnded, Message
 from pytgcalls import PyTgCalls, StreamType
