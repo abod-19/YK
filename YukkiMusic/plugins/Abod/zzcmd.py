@@ -4,8 +4,8 @@ from strings.filters import command
 from pyrogram.types import InlineKeyboardButton, CallbackQuery, InlineKeyboardMarkup, Message
 from typing import Union
 from pyrogram.types import InlineKeyboardButton
-from ZeMusic import app
-from ZeMusic.misc import HAPP, SUDOERS, XCB
+from YukkiMusic import app
+from YukkiMusic.misc import HAPP, SUDOERS, XCB
 from config import OWNER_ID
 import config
 lnk= "https://t.me/" +config.CHANNEL_LINK
