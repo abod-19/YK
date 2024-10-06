@@ -8,12 +8,13 @@
 # All rights reserved.
 #
 from typing import Union
-
+import config
 from pyrogram.types import InlineKeyboardButton
 
 from config import GITHUB_REPO, SUPPORT_CHANNEL, SUPPORT_GROUP
 from YukkiMusic import app
 
+lnk = "https://t.me/" + config.CHANNEL_LINK
 
 def start_pannel(_):
     buttons = [
