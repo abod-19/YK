@@ -54,7 +54,7 @@ async def paste_neko(code: str):
     return await Yukkibin(code)
 
 
-@app.on_message(filters.command(GETLOG_COMMAND) & SUDOERS)
+@app.on_message(filters.command(["getlog", "logs", "السجلات"]) & SUDOERS)
 @language
 async def log_(client, message, _):
     try:
