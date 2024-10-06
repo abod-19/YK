@@ -29,7 +29,7 @@ UNAUTH_COMMAND = get_command("UNAUTH_COMMAND")
 AUTHUSERS_COMMAND = get_command("AUTHUSERS_COMMAND")
 
 
-@app.on_message(filters.command(AUTH_COMMAND) & filters.group & ~BANNED_USERS)
+@app.on_message(filters.command(("رفع ادمن"),"") & filters.group & ~BANNED_USERS)
 @AdminActual
 async def auth(client, message: Message, _):
     if not message.reply_to_message:
@@ -91,7 +91,7 @@ async def auth(client, message: Message, _):
         await message.reply_text(_["auth_3"])
 
 
-@app.on_message(filters.command(UNAUTH_COMMAND) & filters.group & ~BANNED_USERS)
+@app.on_message(filters.command(["تنزيل ادمن"],"") & filters.group & ~BANNED_USERS)
 @AdminActual
 async def unauthusers(client, message: Message, _):
     if not message.reply_to_message:
@@ -124,7 +124,7 @@ async def unauthusers(client, message: Message, _):
         return await message.reply_text(_["auth_5"])
 
 
-@app.on_message(filters.command(AUTHUSERS_COMMAND) & filters.group & ~BANNED_USERS)
+@app.on_message(filters.command(["الادمنيه", "الادمن"],"") & filters.group & ~BANNED_USERS)
 @language
 async def authusers(client, message: Message, _):
     _playlist = await get_authuser_names(message.chat.id)
@@ -145,7 +145,7 @@ async def authusers(client, message: Message, _):
                 j += 1
             except Exception:
                 continue
-            text += f"{j}➤ {user}[`{user_id}`]\n"
+            text += f"{j} - {user}[`{user_id}`]\n"
             text += f"   {_['auth_8']} {admin_name}[`{admin_id}`]\n\n"
         await mystic.delete()
         await message.reply_text(text)
