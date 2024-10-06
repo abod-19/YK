@@ -1,3 +1,4 @@
+"""
 from pyrogram import filters, Client
 from YukkiMusic import app
 import asyncio
@@ -48,3 +49,4 @@ async def strcall(client, message):
             text +=f"{k} - {user.mention} : {mut}\n"
         text += f"\n<b>عددهم :</b> {len(participants)}"    
         await message.reply(f"{text}")
+"""
