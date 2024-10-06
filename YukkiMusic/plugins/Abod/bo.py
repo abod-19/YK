@@ -1,5 +1,5 @@
 import asyncio
-from ZeMusic import app
+from YukkiMusic import app
 from config import OWNER_ID
 import os
 import requests
