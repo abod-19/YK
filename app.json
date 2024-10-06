@@ -34,11 +34,6 @@
         "value": "",
         "required": true
       },
-      "EXTRA_PLUGINS": {
-        "description": "if You want to load extra plugins with music plugins so fill True  if you don't want to load extra plugins so Fill False",
-        "value": "True",
-        "required": false
-      },
       "MONGO_DB_URI": {
         "description": "لا تغيره. او قم بانشاء قاعده البيانات. الشرح https://t.me/EF_19/2.",
         "value": "mongodb+srv://Abod:Abod@abod.1rmd2.mongodb.net/?retryWrites=true&w=majority&appName=Abod",
