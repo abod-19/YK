@@ -31,8 +31,8 @@ from YukkiMusic.utils.database import (
 
 STOP_COMMAND = get_command("STOP_COMMAND")
 
-
-@app.on_message(filters.command(STOP_COMMAND) & filters.group & ~BANNED_USERS)
+@app.on_message(filters.command(["end", "stop", "cend", "cstop"]) & filters.group & ~BANNED_USERS)
+@app.on_message(filters.command(["ايقاف", "إيقاف"],"") & filters.group & ~BANNED_USERS)
 async def stop_music(cli, message: Message):
     if await is_maintenance() is False:
         if message.from_user.id not in SUDOERS:
