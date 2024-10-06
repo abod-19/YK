@@ -4,7 +4,7 @@ from pyrogram import Client, filters
 from YukkiMusic.utils.database import get_assistant
 from pyrogram.types import Message
 from YukkiMusic import (Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app)
-from YukkiMusic.core.call import Mody
+from YukkiMusic.core.call import Yukki
 
 
 @app.on_message(filters.video_chat_started)
