@@ -22,7 +22,7 @@ API_ID = int(getenv("API_ID", ""))
 
 API_HASH = getenv("API_HASH")
 
-
+BOT_NAME = getenv("BOT_NAME","رونا")
 ## Get it from @Botfather in Telegram.
 BOT_TOKEN = getenv("BOT_TOKEN")
 
@@ -104,8 +104,8 @@ GIT_TOKEN = getenv(
     "GIT_TOKEN",
     "",
 )
-
-
+CHANNEL_NAME = getenv("CHANNEL_NAME", "اقتباسات")
+CHANNEL_LINK = getenv("CHANNEL_LINK", "WG_19")
 # Only  Links formats are  accepted for this Var value.
 SUPPORT_CHANNEL = getenv(
     "SUPPORT_CHANNEL", "https://t.me/EF_19"
