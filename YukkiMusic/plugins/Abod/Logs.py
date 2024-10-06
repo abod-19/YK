@@ -9,7 +9,7 @@ from pyrogram.types import (
     Message,
 )
 from config import LOGGER_ID as LOG_ID
-from ZeMusic import app
+from YukkiMusic import app
 
 userbot = Userbot()
 
