@@ -18,7 +18,7 @@ from YukkiMusic.utils.database import autoend_off, autoend_on
 AUTOEND_COMMAND = get_command("AUTOEND_COMMAND")
 
 
-@app.on_message(filters.command((مغادرة)) & SUDOERS)
+@app.on_message(filters.command(("مغادرة")) & SUDOERS)
 async def auto_end_stream(client, message):
     usage = "**ᴜsᴀɢᴇ:**\n\n/مغادرة [تفعيل|تعطيل]"
     if len(message.command) != 2:
