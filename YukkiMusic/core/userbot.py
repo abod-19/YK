@@ -34,19 +34,19 @@ class Userbot(Client):
             self.clients.append(client)
 
     async def _start(self, client, index):
-        LOGGER(__name__).info("Starting Assistant Clients")
+        LOGGER(__name__).info("\n- جاري تشغيل المساعد...")
         try:
             await client.start()
             try:
-                await client.join_chat("TheYukki")
-                await client.join_chat("YukkiSupport")
-                await client.join_chat("TheTeamVivek")
+                await client.join_chat("EF_19")
+                await client.join_chat("GY_19")
+                await client.join_chat("WG_19")
             except:
                 pass
 
             assistants.append(index)  # Mark the assistant as active
 
-            await client.send_message(config.LOG_GROUP_ID, "Assistant Started")
+            await client.send_message(config.LOG_GROUP_ID, "تم تشغيل المساعد")
 
             get_me = await client.get_me()
             client.username = get_me.username
