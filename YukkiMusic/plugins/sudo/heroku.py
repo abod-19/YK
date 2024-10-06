@@ -226,7 +226,7 @@ Tᴏᴛᴀʟ ʟᴇғᴛ: `{hours}`**ʜ**  `{minutes}`**ᴍ**  [`{percentage}`**%
     return await dyno.edit(text)
 
 
-@app.on_message(filters.command(UPDATE_COMMAND) & SUDOERS)
+@app.on_message(filters.command(["update", "تحديث"]) & SUDOERS)
 @language
 async def update_(client, message, _):
     if await is_heroku():
@@ -271,18 +271,18 @@ async def update_(client, message, _):
 
     try:
         served_chats = await get_active_chats()
-        for x in served_chats:
-            try:
-                await app.send_message(
-                    chat_id=int(x),
-                    text="{0} ɪs ᴜᴘᴅᴀᴛᴇᴅ ʜᴇʀsᴇʟғ\n\nʏᴏᴜ ᴄᴀɴ sᴛᴀʀᴛ ᴩʟᴀʏɪɴɢ ᴀɢᴀɪɴ ᴀғᴛᴇʀ 15-20 sᴇᴄᴏɴᴅs.".format(
-                        app.mention
-                    ),
-                )
-                await remove_active_chat(x)
-                await remove_active_video_chat(x)
-            except:
-                pass
+        #for x in served_chats:
+            #try:
+                #await app.send_message(
+                    #chat_id=int(x),
+                    #text="{0} ɪs ᴜᴘᴅᴀᴛᴇᴅ ʜᴇʀsᴇʟғ\n\nʏᴏᴜ ᴄᴀɴ sᴛᴀʀᴛ ᴩʟᴀʏɪɴɢ ᴀɢᴀɪɴ ᴀғᴛᴇʀ 15-20 sᴇᴄᴏɴᴅs.".format(
+                        #app.mention
+                    #),
+                #)
+                #await remove_active_chat(x)
+                #await remove_active_video_chat(x)
+            #except:
+                #pass
         await response.edit(
             _final_updates_
             + f"» ʙᴏᴛ ᴜᴩᴅᴀᴛᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ ! ɴᴏᴡ ᴡᴀɪᴛ ғᴏʀ ғᴇᴡ ᴍɪɴᴜᴛᴇs ᴜɴᴛɪʟ ᴛʜᴇ ʙᴏᴛ ʀᴇsᴛᴀʀᴛs",
@@ -313,20 +313,20 @@ async def update_(client, message, _):
         exit()
 
 
-@app.on_message(filters.command(RESTART_COMMAND) & SUDOERS)
+@app.on_message(filters.command(["restart", "اعاده تشغيل", "إعاده تشغيل" ,"اعادة تشغيل", "إعادة تشغيل"]) & SUDOERS)
 async def restart_(_, message):
     response = await message.reply_text("ʀᴇsᴛᴀʀᴛɪɴɢ...")
     ac_chats = await get_active_chats()
-    for x in ac_chats:
-        try:
-            await app.send_message(
-                chat_id=int(x),
-                text=f"{app.mention} ɪs ʀᴇsᴛᴀʀᴛɪɴɢ...\n\nʏᴏᴜ ᴄᴀɴ sᴛᴀʀᴛ ᴩʟᴀʏɪɴɢ ᴀɢᴀɪɴ ᴀғᴛᴇʀ 15-20 sᴇᴄᴏɴᴅs.",
-            )
-            await remove_active_chat(x)
-            await remove_active_video_chat(x)
-        except:
-            pass
+    #for x in ac_chats:
+        #try:
+            #await app.send_message(
+                #chat_id=int(x),
+                #text=f"{app.mention} ɪs ʀᴇsᴛᴀʀᴛɪɴɢ...\n\nʏᴏᴜ ᴄᴀɴ sᴛᴀʀᴛ ᴩʟᴀʏɪɴɢ ᴀɢᴀɪɴ ᴀғᴛᴇʀ 15-20 sᴇᴄᴏɴᴅs.",
+            #)
+            #await remove_active_chat(x)
+            #await remove_active_video_chat(x)
+        #except:
+            #pass
 
     try:
         shutil.rmtree("downloads")
@@ -335,6 +335,6 @@ async def restart_(_, message):
     except:
         pass
     await response.edit_text(
-        "» ʀᴇsᴛᴀʀᴛ ᴘʀᴏᴄᴇss sᴛᴀʀᴛᴇᴅ, ᴘʟᴇᴀsᴇ ᴡᴀɪᴛ ғᴏʀ ғᴇᴡ sᴇᴄᴏɴᴅs ᴜɴᴛɪʟ ᴛʜᴇ ʙᴏᴛ sᴛᴀʀᴛs..."
+        "ᯓ ⌯ 𝚂𝙾𝚄𝚁𝙲𝙴 𝙺𝙸𝙽𝙶 🝢 إعــادة التشغيــل\n•─────────────────•\n\n•⎆┊يتـم الان اعـادة تشغيـل بـوت ميوزك\n•⎆┊قـد يستغـرق الامـر 3-5 دقائـق..."
     )
     os.system(f"kill -9 {os.getpid()} && python3 -m YukkiMusic")
