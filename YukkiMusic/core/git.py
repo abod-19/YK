@@ -92,4 +92,4 @@ def git():
     if requirements_updated:
         install_req("pip3 install --no-cache-dir -r requirements.txt")
 
-    LOGGER(__name__).info(f"Fetched Updates from: {REPO_LINK}")
+    LOGGER(__name__).info(f"\n- تم رفع تحديثات السورس 🧸♥️ : {REPO_LINK}")
