@@ -20,8 +20,11 @@ def start_pannel(_):
     buttons = [
         [
             InlineKeyboardButton(text=_["S_B_2"], callback_data="settings_helper"),
-        ],
+        ],[
+            InlineKeyboardButton(text="الأوامر", callback_data="zzzback")
+        ]
     ]
+    return buttons
 
 
 def private_panel(_, BOT_USERNAME, OWNER: Union[bool, int] = None):
