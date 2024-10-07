@@ -43,7 +43,7 @@ AUTO_SLEEP = 5
 IS_BROADCASTING = False
 cleanmode_group = 15
 
-
+"""
 @app.on_raw_update(group=cleanmode_group)
 async def clean_mode(client, update, users, chats):
     global IS_BROADCASTING
@@ -71,7 +71,7 @@ async def clean_mode(client, update, users, chats):
     }
     clean[chat_id].append(put)
     await set_queries(1)
-
+"""
 
 @app.on_message(filters.command(["broadcast","اذاعه","اذاعة"]) & filters.user(config.OWNER_ID))
 @language
