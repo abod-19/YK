@@ -27,9 +27,12 @@ __#{chat_name}___
 """
         # التحقق إذا كانت المجموعة تحتوي على صورة
         if chat_photo:
+            # تنزيل الصورة وحفظها
+            photo_file = await client.download_media(chat_photo.big_file_id)
+
             # إرسال الصورة مع النص
             await message.reply_photo(
-                photo=chat_photo.big_file_id,  # استخدام file_id للصورة الكبيرة
+                photo=photo_file,  # استخدام مسار الصورة التي تم تنزيلها
                 caption=welcome_text
             )
         else:
