@@ -10,7 +10,7 @@ async def welcome_new_member(client: Client, message):
     for new_member in message.new_chat_members:
         first_name = new_member.first_name  # اسم العضو الجديد
         username = new_member.username  # يوزر العضو الجديد
-        join_time = datetime.now().strftime("%H:%M:%S")  # الوقت الحالي
+        join_time = datetime.now().strftime("%I:%M %p")  # الوقت بصيغة 12 ساعة مع AM/PM
         join_date = datetime.now().strftime("%Y-%m-%d")  # التاريخ الحالي
 
         # إرسال رسالة ترحيب
