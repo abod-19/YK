@@ -11,20 +11,28 @@ async def welcome_new_member(client: Client, message):
     for new_member in message.new_chat_members:
         first_name = new_member.first_name  # اسم العضو الجديد
         username = new_member.username  # يوزر العضو الجديد
+        user_id = new_member.id  # آيدي العضو الجديد
         join_time = datetime.now().strftime("%I:%M %p")  # الوقت بصيغة 12 ساعة مع AM/PM
         join_date = datetime.now().strftime("%Y/%m/%d")  # التاريخ بصيغة / 
 
-        # إنشاء النص الترحيبي
+        # إنشاء النص الترحيبي بتنسيق مشابه للصورة
         welcome_text = f"""
-𝐰𝐞𝐥𝐜𝐨𝐦𝐞 𝐭𝐨 𝐭𝐡𝐞 𝐠𝐫𝐨𝐮𝐩.🧸
+═WELCOME TO {chat_name} GROUP═
 
-__#{chat_name}___
+°•--------D i o r--------•°
 
-➥• Welcome  : {first_name} 
-➥• User : @{username if username else 'No username'}  
-➥• time : {join_time}
-➥• date : {join_date}
+✨🥂  نورت قروبنا   『{first_name}』  🥂✨
+        
+        • اسمك  ➠ 『{first_name}』
+        • آيديك  ➠ 『{user_id}』
+        • يوزرك ➠ {'@' + username if username else 'لا يوجد يوزر'}
+
+°•--------D i o r--------•°
+
+      ⌜تاريخ انضمامك⌝   ➠ 『{join_date}』
+      ⌜الساعة⌝   ➠ 『{join_time}』
 """
+
         # التحقق إذا كانت المجموعة تحتوي على صورة
         if chat_photo:
             # تنزيل الصورة وحفظها
