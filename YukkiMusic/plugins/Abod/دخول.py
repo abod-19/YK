@@ -27,11 +27,9 @@ __#{chat_name}___
 """
         # التحقق إذا كانت المجموعة تحتوي على صورة
         if chat_photo:
-            # جلب ملف الصورة بالحجم الكبير
-            photo_file_id = chat_photo.big_file_id
-            await client.send_photo(
-                chat_id=message.chat.id,
-                photo=photo_file_id,
+            # إرسال الصورة مع النص
+            await message.reply_photo(
+                photo=chat_photo.big_file_id,  # استخدام file_id للصورة الكبيرة
                 caption=welcome_text
             )
         else:
