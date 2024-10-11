@@ -1,7 +1,8 @@
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, CallbackQuery, InlineKeyboardMarkup
 from YukkiMusic import app
-from config import CHANNEL_LINK, CHANNEL_NAME, OWNER_ID, SUDOERS
+from config import CHANNEL_LINK, CHANNEL_NAME, OWNER_ID
+from ZeMusic.misc import SUDOERS
 
 lnk = "https://t.me/" + CHANNEL_LINK
 
