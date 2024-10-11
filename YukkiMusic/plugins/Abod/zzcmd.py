@@ -64,7 +64,7 @@ async def prvett(_, query: CallbackQuery):
                 ],[
                     InlineKeyboardButton(
                         "رجـوع", callback_data="aprvett"),
-            ],
+                ],
             ]
         ),
     )
@@ -74,12 +74,7 @@ async def prvett(_, query: CallbackQuery):
 @app.on_callback_query(filters.regex("aprvett"))
 async def aprvett(_, query: CallbackQuery):
    await query.edit_message_text(
-       f"""اهلين فيـك عمـري في بوت {app.mention} ♪
-
-- وضيفة البوت تشغيل الوسائط والاغاني في المكالمات الجماعية الخاصة بالمجوعات وال 
-قنوات
-
-- للاستفسار او الاقتراحات تواصل مع مطور البوت عن طريق زر المطور اسفل القائمة
+       f"""- منور يحبي باوامر الميوزك
 ٴ⋆┄─┄─┄─┄─┄─┄─┄─┄⋆
 - لعـرض كيبـورد الاوامـر الخـدميـة إضغـط ← /cmds""",
         reply_markup=InlineKeyboardMarkup(
