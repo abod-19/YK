@@ -6,6 +6,26 @@ from YukkiMusic.misc import SUDOERS
 
 lnk = "https://t.me/" + CHANNEL_LINK
 
+@app.on_callback_query(filters.regex("aprvett"))
+async def prvett(_, query: CallbackQuery):
+    await query.edit_message_text(
+            """<b>- اهلين فيـك عمـري في بوت لين ♪
+
+- وضيفة البوت تشغيل الوسائط والاغاني في المكالمات الجماعية الخاصة بالمجوعات والقنوات""",
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton("الاوامــر", callback_data="prvett")
+                    ],[
+                        InlineKeyboardButton("المطور", url=f"tg://openmessage?user_id={OWNER_ID[0]}"),
+                    ],[
+                        InlineKeyboardButton(text=CHANNEL_NAME, url=lnk)
+                    ],
+                ]
+            ),
+        )
+
+
 @app.on_callback_query(filters.regex("zzzback"))
 async def zzzback(_, query: CallbackQuery):
     await query.edit_message_text(
@@ -25,12 +45,7 @@ async def zzzback(_, query: CallbackQuery):
 
 @app.on_callback_query(filters.regex("prvett"))
 async def prvett(_, query: CallbackQuery):
-    if query.message.text != """<b>اهلين فيـك عمـري في بوت لين ♪
-
-- وضيفة البوت تشغيل الوسائط والاغاني في المكالمات الجماعية الخاصة بالمجوعات والقنوات
-
-- للاستفسار او الاقتراحات تواصل مع مطور البوت عن طريق زر المطور اسفل القائمة""":
-        await query.edit_message_text(
+    await query.edit_message_text(
             """<b>اهلين فيـك عمـري في بوت لين ♪
 
 - وضيفة البوت تشغيل الوسائط والاغاني في المكالمات الجماعية الخاصة بالمجوعات والقنوات
@@ -49,25 +64,7 @@ async def prvett(_, query: CallbackQuery):
                 ]
             ),
         )
-
-@app.on_callback_query(filters.regex("aprvett"))
-async def aprvett(_, query: CallbackQuery):
-    await query.edit_message_text(
-        "- منور يحبي باوامر الميوزك",
-        """reply_markup=InlineKeyboardMarkup(
-            [
-                [InlineKeyboardButton(text="الأوامر", callback_data="prvett")],
-                [InlineKeyboardButton(text=CHANNEL_NAME, url=lnk)],
-                [
-                    InlineKeyboardButton(
-                        text="بدء محادثة",
-                        url=f"https://t.me/{app.username}?startgroup=true",
-                    )
-                ],
-                [InlineKeyboardButton("رجـوع", callback_data="zzzback")],
-            ]
-        ),"""
-    )
+    
 
 @app.on_callback_query(filters.regex("zzzdv") & SUDOERS)
 async def mpdtsf(_, query: CallbackQuery):
