@@ -2,12 +2,27 @@ import asyncio
 from pyrogram import Client, filters
 from datetime import datetime
 from YukkiMusic import app
+from pyrogram.enums import ChatMemberStatus
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+
 
 @app.on_message(filters.new_chat_members)
 async def welcome_new_member(client: Client, message):
     chat = await app.get_chat(message.chat.id)
     chat_name = chat.title  # اسم الجروب
     chat_photo = chat.photo  # صورة الجروب
+    
+    chat_id = message.chat.id
+    async for member in client.get_chat_members(chat_id):
+        if member.status == ChatMemberStatus.OWNER:  # جلب منشئ المجموعة فقط
+            owner_id = member.user.id
+            owner_name = member.user.first_name
+     
+    keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[[
+                InlineKeyboardButton(f"{owner_name}", url=f"tg://openmessage?user_id={owner_id}")
+            ]]
+    )       
     for new_member in message.new_chat_members:
         first_name = new_member.first_name  # اسم العضو الجديد
         username = new_member.username  # يوزر العضو الجديد
@@ -33,8 +48,9 @@ __#{chat_name}__
             # إرسال الصورة مع النص
             await message.reply_photo(
                 photo=photo_file,  # استخدام مسار الصورة التي تم تنزيلها
-                caption=welcome_text
+                caption=welcome_text,
+                reply_markup=keyboard
             )
         else:
             # إرسال النص فقط إذا لم تكن هناك صورة
-            await message.reply_text(welcome_text)
+            await message.reply_text(welcome_text, reply_markup=keyboard)
