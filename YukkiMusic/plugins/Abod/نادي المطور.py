@@ -20,7 +20,7 @@ Nem = BOT_NAME + " نادي المطور"
 @app.on_message(filters.command(["نادي المطور", Nem],"") & filters.group)
 async def call_dev(client: Client, message: Message):
 
-    usm = await client.get_users(OWNER_ID)
+    usm = await client.get_users(OWNER_ID[0])
     mname = usm.first_name
     musrnam = usm.username
     
@@ -35,7 +35,7 @@ async def call_dev(client: Client, message: Message):
     buttons = [[InlineKeyboardButton(gti, url=f"{link}")]]
     reply_markup = InlineKeyboardMarkup(buttons)
     
-    await app.send_message(OWNER_ID, f"<b>⌯ قام {message.from_user.mention}\n</b>"
+    await app.send_message(OWNER_ID[0], f"<b>⌯ قام {message.from_user.mention}\n</b>"
                                      f"<b>⌯ بمناداتك عزيزي المطور\n</b>"
                                      f"<b>⌯ الأيدي {user_id}\n</b>"
                                      f"<b>⌯ اليوزر @{user_ab}\n</b>"
