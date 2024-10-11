@@ -18,8 +18,11 @@ lnk= "https://t.me/" +CHANNEL_LINK
 
 def start_pannel(_):
     buttons = [
+        [
             InlineKeyboardButton(text=_["S_B_2"], callback_data="settings_helper"),
+        ],[
             InlineKeyboardButton(text="الأوامر", callback_data="zzzback")
+        ]
     ]
     return buttons
 
@@ -39,11 +42,8 @@ def private_panel(_, BOT_USERNAME, OWNER: Union[bool, int] = None):
     if lnk and OWNER:
         buttons.append(
             [
-                [
-                    InlineKeyboardButton(text="المطور", user_id=OWNER),
-                ],[
-                    InlineKeyboardButton(text=CHANNEL_NAME, url=lnk),
-                ]
+                InlineKeyboardButton(text="المطور", user_id=OWNER),
+                InlineKeyboardButton(text=CHANNEL_NAME, url=lnk),
             ]
         )
     else:
