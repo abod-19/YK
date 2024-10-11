@@ -57,7 +57,7 @@ async def leave_group(client, message):
 
 
 
-@app.on_message(command([Nem]) & filters.user(config.OWNER_ID))
+@app.on_message(command([Nem]) & filters.user(config.OWNER_ID[0]))
 async def leave_group(client, message):
     try:
         userbot = await get_assistant(message.chat.id)
