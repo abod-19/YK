@@ -11,7 +11,7 @@ import config
 
 lnk= "https://t.me/" +config.CHANNEL_LINK
                                        
-@app.on_callback_query(filters.regex("zzzback"))
+@app.on_callback_query(filters.regex("zzzback") & filters.group)
 async def zzzback(_, query: CallbackQuery):
    await query.edit_message_text(
        f"""<b>⟡ منور يحبي باوامر الميوزك .</b>\n\n<b>⟡ استخدم الازرار الي تحت .\n⟡ عشان تشوف اوامر الميوزك يعيني .</b>""",
@@ -37,10 +37,14 @@ async def zzzback(_, query: CallbackQuery):
     )
 
 
-@app.on_callback_query(filters.regex("prvett"))
+@app.on_callback_query(filters.regex("prvett") & filters.private)
 async def zzzback(_, query: CallbackQuery):
    await query.edit_message_text(
-       f"""<b>⟡ منور يحبي باوامر الميوزك .</b>\n\n<b>⟡ استخدم الازرار الي تحت .\n⟡ عشان تشوف اوامر الميوزك يعيني .</b>""",
+       f"""<b>اهلين فيـك عمـري في بوت لين ♪
+
+- وضيفة البوت تشغيل الوسائط والاغاني في المكالمات الجماعية الخاصة بالمجوعات والقنوات
+
+- للاستفسار او الاقتراحات تواصل مع مطور البوت عن طريق زر المطور اسفل القائمة""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
