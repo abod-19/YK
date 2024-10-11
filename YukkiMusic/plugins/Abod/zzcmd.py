@@ -6,7 +6,7 @@ from YukkiMusic.misc import SUDOERS
 
 lnk = "https://t.me/" + CHANNEL_LINK
 
-@app.on_callback_query(filters.regex("aprvett"))
+@app.on_callback_query(filters.regex("aprvett1"))
 async def prvett(_, query: CallbackQuery):
     await query.edit_message_text(
             f"""- اهلين فيـك عمـري في بوت {app.mention} ♪
@@ -47,7 +47,7 @@ async def zzzback(_, query: CallbackQuery):
         ),
     )
 
-@app.on_callback_query(filters.regex("prvett"))
+@app.on_callback_query(filters.regex("prvett1"))
 async def prvett(_, query: CallbackQuery):
     await query.edit_message_text(
             """- اليك اوامر الميوزك .
@@ -89,12 +89,6 @@ async def mpdtsf(_, query: CallbackQuery):
 
 @app.on_callback_query(filters.regex("zzzll"))
 async def zzzll(_, query: CallbackQuery):
-    if query.message.chat.type == "private":
-        callback_data = "prvett"
-    else:
-        callback_data = "zzzback"
-    print(query.message.chat.type)  # تأكد من طباعة نوع الدردشة
-  
     await query.edit_message_text(
        f"""
 ● <b>قائمــة اوامــر الـتشغـيـل :</b>
@@ -110,7 +104,7 @@ async def zzzll(_, query: CallbackQuery):
           [
                [
                     InlineKeyboardButton(
-                        "رجـوع", callback_data=callback_data),
+                        "رجـوع", callback_data="zzzback"),
                ],
           ]
         ),
