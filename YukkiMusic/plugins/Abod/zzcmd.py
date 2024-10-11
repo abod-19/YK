@@ -66,8 +66,8 @@ async def aprvett(_, query: CallbackQuery):
                 ],
                 [InlineKeyboardButton("رجـوع", callback_data="zzzback")],
             ]
-        ),
-    )"""
+        ),"""
+    )
 
 @app.on_callback_query(filters.regex("zzzdv") & SUDOERS)
 async def mpdtsf(_, query: CallbackQuery):
