@@ -1,126 +1,91 @@
-import asyncio
 from pyrogram import Client, filters
-from strings.filters import command
-from pyrogram.types import InlineKeyboardButton, CallbackQuery, InlineKeyboardMarkup, Message
-from typing import Union
-from pyrogram.types import InlineKeyboardButton
+from pyrogram.types import InlineKeyboardButton, CallbackQuery, InlineKeyboardMarkup
 from YukkiMusic import app
-from YukkiMusic.misc import HAPP, SUDOERS, XCB
-from config import OWNER_ID
-import config
+from config import CHANNEL_LINK, CHANNEL_NAME, OWNER_ID, SUDOERS
 
-lnk= "https://t.me/" +config.CHANNEL_LINK
-                                       
+lnk = "https://t.me/" + CHANNEL_LINK
+
 @app.on_callback_query(filters.regex("zzzback"))
 async def zzzback(_, query: CallbackQuery):
-   await query.edit_message_text(
-       f"""<b>⟡ منور يحبي باوامر الميوزك .</b>\n\n<b>⟡ استخدم الازرار الي تحت .\n⟡ عشان تشوف اوامر الميوزك يعيني .</b>""",
+    await query.edit_message_text(
+        """<b>⟡ منور يحبي باوامر الميوزك .</b>\n\n<b>⟡ استخدم الازرار الي تحت .\n⟡ عشان تشوف اوامر الميوزك يعيني .</b>""",
         reply_markup=InlineKeyboardMarkup(
             [
+                [InlineKeyboardButton("اوامــر التشغيــل", callback_data="zzzll")],
                 [
-                    InlineKeyboardButton(
-                        "اوامــر التشغيــل", callback_data="zzzll"),
-                ],[
-                    InlineKeyboardButton(
-                        "اوامـر القنـاة", callback_data="zzzch"),
-                    InlineKeyboardButton(
-                        "اوامـر الادمـن", callback_data="zzzad"),
-                ],[
-                    InlineKeyboardButton(
-                        "اوامــر المطــور", callback_data="zzzdv"),
-                ],[
-                    InlineKeyboardButton(
-                        text=config.CHANNEL_NAME, url=lnk),
+                    InlineKeyboardButton("اوامـر القنـاة", callback_data="zzzch"),
+                    InlineKeyboardButton("اوامـر الادمـن", callback_data="zzzad"),
                 ],
+                [InlineKeyboardButton("اوامــر المطــور", callback_data="zzzdv")],
+                [InlineKeyboardButton(text=CHANNEL_NAME, url=lnk)],
             ]
         ),
     )
 
-
 @app.on_callback_query(filters.regex("prvett"))
 async def prvett(_, query: CallbackQuery):
-   await query.edit_message_text(
-       f"""<b>اهلين فيـك عمـري في بوت لين ♪
+    if query.message.text != """<b>اهلين فيـك عمـري في بوت لين ♪
+
+- وضيفة البوت تشغيل الوسائط والاغاني في المكالمات الجماعية الخاصة بالمجوعات والقنوات
+
+- للاستفسار او الاقتراحات تواصل مع مطور البوت عن طريق زر المطور اسفل القائمة""":
+        await query.edit_message_text(
+            """<b>اهلين فيـك عمـري في بوت لين ♪
 
 - وضيفة البوت تشغيل الوسائط والاغاني في المكالمات الجماعية الخاصة بالمجوعات والقنوات
 
 - للاستفسار او الاقتراحات تواصل مع مطور البوت عن طريق زر المطور اسفل القائمة""",
-        reply_markup=InlineKeyboardMarkup(
-            [
+            reply_markup=InlineKeyboardMarkup(
                 [
-                    InlineKeyboardButton(
-                        "اوامــر التشغيــل", callback_data="zzzll"),
-                ],[
-                    InlineKeyboardButton(
-                        "اوامـر القنـاة", callback_data="zzzch"),
-                    InlineKeyboardButton(
-                        "اوامـر الادمـن", callback_data="zzzad"),
-                ],[
-                    InlineKeyboardButton(
-                        "اوامــر المطــور", callback_data="zzzdv"),
-                ],[
-                    InlineKeyboardButton(
-                        text=config.CHANNEL_NAME, url=lnk),
-                ],[
-                    InlineKeyboardButton(
-                        "رجـوع", callback_data="aprvett"),
-                ],
-            ]
-        ),
-    )
-
-
+                    [InlineKeyboardButton("اوامــر التشغيــل", callback_data="zzzll")],
+                    [
+                        InlineKeyboardButton("اوامـر القنـاة", callback_data="zzzch"),
+                        InlineKeyboardButton("اوامـر الادمـن", callback_data="zzzad"),
+                    ],
+                    [InlineKeyboardButton("اوامــر المطــور", callback_data="zzzdv")],
+                    [InlineKeyboardButton(text=CHANNEL_NAME, url=lnk)],
+                    [InlineKeyboardButton("رجـوع", callback_data="aprvett")],
+                ]
+            ),
+        )
 
 @app.on_callback_query(filters.regex("aprvett"))
 async def aprvett(_, query: CallbackQuery):
-   await query.edit_message_text(
-       f"""- منور يحبي باوامر الميوزك""",
-        reply_markup=InlineKeyboardMarkup(
-          [
-            [
-                InlineKeyboardButton(text="الأوامر", callback_data="prvett")
-            ],[
-                #InlineKeyboardButton(text="المطور", user_id=OWNER_ID),
-                InlineKeyboardButton(text=config.CHANNEL_NAME, url=lnk),
-            ],[
-                InlineKeyboardButton(
-                 text=_["S_B_5"],
-                 url=f"https://t.me/{app.username}?startgroup=true",)
-            #],[
-                #InlineKeyboardButton(
-                  #"رجـوع", callback_data="zzzback"),
-            ],
-          ]
-        ),
-    )
-
-
-@app.on_callback_query(filters.regex("zzzdv") & SUDOERS)
-async def mpdtsf(_, query: CallbackQuery):
-   await query.edit_message_text(
-       f"""<b>⟡ مرحبـاً بك عـزيـزي المطـور </b>\n\n<b>⟡ استخدم الازرار الي تحت .\n⟡ عشان تشوف اوامر الميوزك يعيني .</b>""",
+    await query.edit_message_text(
+        "- منور يحبي باوامر الميوزك",
         reply_markup=InlineKeyboardMarkup(
             [
+                [InlineKeyboardButton(text="الأوامر", callback_data="prvett")],
+                [InlineKeyboardButton(text=CHANNEL_NAME, url=lnk)],
                 [
                     InlineKeyboardButton(
-                        "التحـديث", callback_data="zzzup"),
-                ],[
-                    InlineKeyboardButton(
-                        "الـرفــع", callback_data="zzzsu"),
-                    InlineKeyboardButton(
-                        "الـحظــر", callback_data="zzzbn"),
-                ],[
-                    InlineKeyboardButton(
-                        "الاشعــارات & المسـاعــد", callback_data="zzzas"),
-                ],[
-                    InlineKeyboardButton(
-                        "رجـوع", callback_data="zzzback"),
+                        text="بدء محادثة",
+                        url=f"https://t.me/{app.username}?startgroup=true",
+                    )
                 ],
+                [InlineKeyboardButton("رجـوع", callback_data="zzzback")],
             ]
         ),
     )
 
+@app.on_callback_query(filters.regex("zzzdv") & SUDOERS)
+async def mpdtsf(_, query: CallbackQuery):
+    await query.edit_message_text(
+        """<b>⟡ مرحبـاً بك عـزيـزي المطـور </b>\n\n<b>⟡ استخدم الازرار الي تحت .\n⟡ عشان تشوف اوامر الميوزك يعيني .</b>""",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [InlineKeyboardButton("التحـديث", callback_data="zzzup")],
+                [
+                    InlineKeyboardButton("الـرفــع", callback_data="zzzsu"),
+                    InlineKeyboardButton("الـحظــر", callback_data="zzzbn"),
+                ],
+                [InlineKeyboardButton("الاشعــارات & المسـاعــد", callback_data="zzzas")],
+                [InlineKeyboardButton("رجـوع", callback_data="zzzback")],
+            ]
+        ),
+    )
 
+# تابع بقية الدوال باستخدام نفس الأسلوب لتنظيم الكود
 
 @app.on_callback_query(filters.regex("zzzll"))
 async def zzzll(_, query: CallbackQuery):
