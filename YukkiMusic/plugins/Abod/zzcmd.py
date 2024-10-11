@@ -10,8 +10,9 @@ lnk = "https://t.me/" + CHANNEL_LINK
 async def prvett(_, query: CallbackQuery):
     await query.edit_message_text(
             f"""- اهلين فيـك عمـري في بوت {app.mention} ♪
+
 - وضيفة البوت تشغيل الوسائط والاغاني في المكالمات الجماعية الخاصة بالمجوعات والقنوات
-ٴ⋆┄─┄─┄─┄─┄─┄─┄─┄⋆
+
 - لعـرض كيبـورد الاوامـر الخـدميـة إضغـط ← /cmds""",
             reply_markup=InlineKeyboardMarkup(
                 [
