@@ -29,7 +29,7 @@ def start_pannel(_):
 
 def private_panel(_, BOT_USERNAME, OWNER: Union[bool, int] = None):
     buttons = [
-        [InlineKeyboardButton(text="الأوامر", callback_data="zzzback")]
+        [InlineKeyboardButton(text="الأوامر", callback_data="prvett")]
     ]
     buttons.append(
         [
