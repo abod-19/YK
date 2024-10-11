@@ -37,7 +37,7 @@ async def zzzback(_, query: CallbackQuery):
     )
 
 
-@app.on_callback_query(filters.regex("prvett") & filters.private)
+@app.on_callback_query(filters.regex("prvett"))
 async def prvett(_, query: CallbackQuery):
    await query.edit_message_text(
        f"""<b>اهلين فيـك عمـري في بوت لين ♪
