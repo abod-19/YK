@@ -90,7 +90,7 @@ async def mpdtsf(_, query: CallbackQuery):
 
 @app.on_callback_query(filters.regex("zzzll"))
 async def zzzll(_, query: CallbackQuery):
-    callback_data = "prvett" if query.message.chat.type == "private" else "zzzback"
+    callback_data = "prvett" #if query.message.chat.type == "private" else "zzzback"
   
     await query.edit_message_text(
        f"""
