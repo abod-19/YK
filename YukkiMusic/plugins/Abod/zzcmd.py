@@ -8,6 +8,8 @@ from YukkiMusic import app
 from YukkiMusic.misc import HAPP, SUDOERS, XCB
 from config import OWNER_ID
 import config
+from pyrogram.types import ChatType
+
 lnk= "https://t.me/" +config.CHANNEL_LINK
                                        
 @app.on_callback_query(filters.regex("zzzback"))
@@ -126,9 +128,9 @@ async def mpdtsf(_, query: CallbackQuery):
 
 @app.on_callback_query(filters.regex("zzzll"))
 async def zzzll(_, query: CallbackQuery):
-  callback_data = "prvett" if filters.private(query.message.chat) else "zzzback"
+    callback_data = "prvett" if query.message.chat.type == ChatType.PRIVATE else "zzzback"
   
-  await query.edit_message_text(
+    await query.edit_message_text(
        f"""
 ● <b>قائمــة اوامــر الـتشغـيـل :</b>
 ٴ⋆┄─┄─┄─┄─┄─┄─┄─┄⋆
