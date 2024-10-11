@@ -36,6 +36,66 @@ async def zzzback(_, query: CallbackQuery):
     )
 
 
+@app.on_callback_query(filters.regex("prvett"))
+async def zzzback(_, query: CallbackQuery):
+   await query.edit_message_text(
+       f"""<b>⟡ منور يحبي باوامر الميوزك .</b>\n\n<b>⟡ استخدم الازرار الي تحت .\n⟡ عشان تشوف اوامر الميوزك يعيني .</b>""",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "اوامــر التشغيــل", callback_data="zzzll"),
+                ],[
+                    InlineKeyboardButton(
+                        "اوامـر القنـاة", callback_data="zzzch"),
+                    InlineKeyboardButton(
+                        "اوامـر الادمـن", callback_data="zzzad"),
+                ],[
+                    InlineKeyboardButton(
+                        "اوامــر المطــور", callback_data="zzzdv"),
+                ],[
+                    InlineKeyboardButton(
+                        text=config.CHANNEL_NAME, url=lnk),
+                ],[
+                    InlineKeyboardButton(
+                        "رجـوع", callback_data="aprvett"),
+            ],
+            ]
+        ),
+    )
+
+
+
+@app.on_callback_query(filters.regex("aprvett"))
+async def zzzback(_, query: CallbackQuery):
+   await query.edit_message_text(
+       f"""اهلين فيـك عمـري في بوت {app.mention} ♪
+
+- وضيفة البوت تشغيل الوسائط والاغاني في المكالمات الجماعية الخاصة بالمجوعات وال 
+قنوات
+
+- للاستفسار او الاقتراحات تواصل مع مطور البوت عن طريق زر المطور اسفل القائمة
+ٴ⋆┄─┄─┄─┄─┄─┄─┄─┄⋆
+- لعـرض كيبـورد الاوامـر الخـدميـة إضغـط ← /cmds""",
+        reply_markup=InlineKeyboardMarkup(
+          [
+            [
+                InlineKeyboardButton(text="الأوامر", callback_data="prvett")
+            ],[
+                InlineKeyboardButton(text="المطور", user_id=OWNER),
+                InlineKeyboardButton(text=CHANNEL_NAME, url=lnk),
+            ],[
+                InlineKeyboardButton(
+                 text=_["S_B_5"],
+                 url=f"https://t.me/{BOT_USERNAME}?startgroup=true",)
+            ],[
+                InlineKeyboardButton(
+                  "رجـوع", callback_data="zzzback"),
+            ],
+          ]
+        ),
+    )
+
 
 @app.on_callback_query(filters.regex("zzzdv") & SUDOERS)
 async def mpdtsf(_, query: CallbackQuery):
@@ -66,7 +126,9 @@ async def mpdtsf(_, query: CallbackQuery):
 
 @app.on_callback_query(filters.regex("zzzll"))
 async def zzzll(_, query: CallbackQuery):
-   await query.edit_message_text(
+  callback_data = "prvett" if filters.private(query.message.chat) else "zzzback"
+  
+  await query.edit_message_text(
        f"""
 ● <b>قائمــة اوامــر الـتشغـيـل :</b>
 ٴ⋆┄─┄─┄─┄─┄─┄─┄─┄⋆
@@ -81,7 +143,7 @@ async def zzzll(_, query: CallbackQuery):
           [
                [
                     InlineKeyboardButton(
-                        "رجـوع", callback_data="zzzback"),
+                        "رجـوع", callback_data=callback_data),
                ],
           ]
         ),
