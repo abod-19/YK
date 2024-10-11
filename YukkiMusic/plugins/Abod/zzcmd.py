@@ -88,7 +88,7 @@ async def aprvett(_, query: CallbackQuery):
                 InlineKeyboardButton(text="الأوامر", callback_data="prvett")
             ],[
                 InlineKeyboardButton(text="المطور", user_id=OWNER_ID),
-                InlineKeyboardButton(text=CHANNEL_NAME, url=lnk),
+                InlineKeyboardButton(text=config.CHANNEL_NAME, url=lnk),
             ],[
                 InlineKeyboardButton(
                  text=_["S_B_5"],
