@@ -74,9 +74,7 @@ async def prvett(_, query: CallbackQuery):
 @app.on_callback_query(filters.regex("aprvett"))
 async def aprvett(_, query: CallbackQuery):
    await query.edit_message_text(
-       f"""- منور يحبي باوامر الميوزك
-ٴ⋆┄─┄─┄─┄─┄─┄─┄─┄⋆
-- لعـرض كيبـورد الاوامـر الخـدميـة إضغـط ← /cmds""",
+       f"""- منور يحبي باوامر الميوزك""",
         reply_markup=InlineKeyboardMarkup(
           [
             [
