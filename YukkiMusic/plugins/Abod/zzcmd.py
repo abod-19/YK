@@ -54,7 +54,7 @@ async def prvett(_, query: CallbackQuery):
 async def aprvett(_, query: CallbackQuery):
     await query.edit_message_text(
         "- منور يحبي باوامر الميوزك",
-        reply_markup=InlineKeyboardMarkup(
+        """reply_markup=InlineKeyboardMarkup(
             [
                 [InlineKeyboardButton(text="الأوامر", callback_data="prvett")],
                 [InlineKeyboardButton(text=CHANNEL_NAME, url=lnk)],
@@ -67,7 +67,7 @@ async def aprvett(_, query: CallbackQuery):
                 [InlineKeyboardButton("رجـوع", callback_data="zzzback")],
             ]
         ),
-    )
+    )"""
 
 @app.on_callback_query(filters.regex("zzzdv") & SUDOERS)
 async def mpdtsf(_, query: CallbackQuery):
