@@ -89,7 +89,11 @@ async def mpdtsf(_, query: CallbackQuery):
 
 @app.on_callback_query(filters.regex("zzzll"))
 async def zzzll(_, query: CallbackQuery):
-    callback_data = "prvett" if query.message.chat.type == "private" else "zzzback"
+    if query.message.chat.type == "private":
+        callback_data = "prvett"
+    else:
+        callback_data = "zzzback"
+    print(query.message.chat.type)  # تأكد من طباعة نوع الدردشة
   
     await query.edit_message_text(
        f"""
