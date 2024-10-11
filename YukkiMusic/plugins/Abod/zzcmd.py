@@ -9,9 +9,10 @@ lnk = "https://t.me/" + CHANNEL_LINK
 @app.on_callback_query(filters.regex("aprvett"))
 async def prvett(_, query: CallbackQuery):
     await query.edit_message_text(
-            """<b>- اهلين فيـك عمـري في بوت لين ♪
-
-- وضيفة البوت تشغيل الوسائط والاغاني في المكالمات الجماعية الخاصة بالمجوعات والقنوات""",
+            f"""- اهلين فيـك عمـري في بوت {app.mention} ♪
+- وضيفة البوت تشغيل الوسائط والاغاني في المكالمات الجماعية الخاصة بالمجوعات والقنوات
+ٴ⋆┄─┄─┄─┄─┄─┄─┄─┄⋆
+- لعـرض كيبـورد الاوامـر الخـدميـة إضغـط ← /cmds""",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -20,6 +21,8 @@ async def prvett(_, query: CallbackQuery):
                         InlineKeyboardButton("المطور", url=f"tg://openmessage?user_id={OWNER_ID[0]}"),
                     ],[
                         InlineKeyboardButton(text=CHANNEL_NAME, url=lnk)
+                    ],[
+                        InlineKeyboardButton("اضفني قروبك", url=f"https://t.me/{app.username}?startgroup=true"),
                     ],
                 ]
             ),
@@ -46,11 +49,9 @@ async def zzzback(_, query: CallbackQuery):
 @app.on_callback_query(filters.regex("prvett"))
 async def prvett(_, query: CallbackQuery):
     await query.edit_message_text(
-            """<b>اهلين فيـك عمـري في بوت لين ♪
-
-- وضيفة البوت تشغيل الوسائط والاغاني في المكالمات الجماعية الخاصة بالمجوعات والقنوات
-
-- للاستفسار او الاقتراحات تواصل مع مطور البوت عن طريق زر المطور اسفل القائمة""",
+            """- اليك اوامر الميوزك .
+        
+- استخدم الازرار الي تحت .""",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [InlineKeyboardButton("اوامــر التشغيــل", callback_data="zzzll")],
@@ -87,7 +88,7 @@ async def mpdtsf(_, query: CallbackQuery):
 
 @app.on_callback_query(filters.regex("zzzll"))
 async def zzzll(_, query: CallbackQuery):
-    callback_data = "prvett" #if query.message.chat.type == "private" else "zzzback"
+    callback_data = "prvett" if query.message.chat.type == "private" else "zzzback"
   
     await query.edit_message_text(
        f"""
