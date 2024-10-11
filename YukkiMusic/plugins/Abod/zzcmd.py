@@ -6,29 +6,6 @@ from YukkiMusic.misc import SUDOERS
 
 lnk = "https://t.me/" + CHANNEL_LINK
 
-@app.on_callback_query(filters.regex("aprvett1"))
-async def prvett(_, query: CallbackQuery):
-    await query.edit_message_text(
-            f"""- اهلين فيـك عمـري في بوت {app.mention} ♪
-
-- وضيفة البوت تشغيل الوسائط والاغاني في المكالمات الجماعية الخاصة بالمجوعات والقنوات
-
-- لعـرض كيبـورد الاوامـر الخـدميـة إضغـط ← /cmds""",
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton("الاوامــر", callback_data="prvett")
-                    ],[
-                        InlineKeyboardButton("المطور", url=f"tg://openmessage?user_id={OWNER_ID[0]}"),
-                    ],[
-                        InlineKeyboardButton(text=CHANNEL_NAME, url=lnk)
-                    ],[
-                        InlineKeyboardButton("اضفني قروبك", url=f"https://t.me/{app.username}?startgroup=true"),
-                    ],
-                ]
-            ),
-        )
-
 
 @app.on_callback_query(filters.regex("zzzback"))
 async def zzzback(_, query: CallbackQuery):
@@ -46,26 +23,6 @@ async def zzzback(_, query: CallbackQuery):
             ]
         ),
     )
-
-@app.on_callback_query(filters.regex("prvett1"))
-async def prvett(_, query: CallbackQuery):
-    await query.edit_message_text(
-            """- اليك اوامر الميوزك .
-        
-- استخدم الازرار الي تحت .""",
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [InlineKeyboardButton("اوامــر التشغيــل", callback_data="zzzll")],
-                    [
-                        InlineKeyboardButton("اوامـر القنـاة", callback_data="zzzch"),
-                        InlineKeyboardButton("اوامـر الادمـن", callback_data="zzzad"),
-                    ],
-                    [InlineKeyboardButton("اوامــر المطــور", callback_data="zzzdv")],
-                    [InlineKeyboardButton(text=CHANNEL_NAME, url=lnk)],
-                    [InlineKeyboardButton("رجـوع", callback_data="aprvett")],
-                ]
-            ),
-        )
     
 
 @app.on_callback_query(filters.regex("zzzdv") & SUDOERS)
@@ -93,11 +50,15 @@ async def zzzll(_, query: CallbackQuery):
        f"""
 ● <b>قائمــة اوامــر الـتشغـيـل :</b>
 ٴ⋆┄─┄─┄─┄─┄─┄─┄─┄⋆
-تشغيل + (اسم الاغنية / رابط الاغنية)
-<b>- لــ تـشـغـيل اغـنـيـة فـي الـمكـالـمـة الـصـوتـيـة</b>
+تشغيل + (اسم المقطع / رابط المقطع)
+<b>- لــ تـشـغـيل المقطع فـي الـمكـالـمـة الـصـوتـيـة</b>
+
+فيديو + (اسم المقطع / رابط المقطع)
+<b>- لــ تـشـغـيل المقطع فيديو فـي الـمكـالـمـة </b>
+
 
 بحث + الاسـم
-<b>- لـ تحميـل الاغانـي والمقـاطـع الصوتيـه مـن اليوتيـوب</b>
+<b>- لـ تحميـل المقـاطـع الصوتيـه مـن اليوتيـوب</b>
 
 """,
        reply_markup=InlineKeyboardMarkup(
@@ -134,7 +95,7 @@ async def zzzad(_, query: CallbackQuery):
 تخطي / التالي
 <b>- لـ تخطـي الاغنيـة وتشغيـل الاغنيـة التاليـه</b>
 
-/الاغاني
+الاغاني
 <b>- لـ معـرفـة الاغـانـي المـوجـودة فـي قائمـة الانتظـار</b>
 
 بنج
@@ -175,22 +136,22 @@ async def zzzch(_, query: CallbackQuery):
 <b>- ثم استخـدم الاوامــر بالاسفـل بالمجموعه لـ التشغيـل</b>
 <b>- "استخدم الاوامر بـ / او بدون"</b>
 ٴ⋆┄─┄─┄─┄─┄─┄─┄─┄⋆
-cplay + اسم الاغنية
+/cplay + اسم الاغنية
 <b>- لــ تـشـغـيل اغـنـيـة فـي الـمكـالـمـة الـصـوتـيـة</b>
 
-cvplay + اسم المقـطـع
+/cvplay + اسم المقـطـع
 <b>- لــ تـشـغـيل فيـديـو فـي الـمكـالـمـة المـرئيـة</b>
 
-cstop
+/cstop
 <b>- لـ إيقـاف تـشغـيـل الـمـوسـيـقـى فـي المكـالمـة</b>
 
-cpause
+/cpause
 <b>- لـ إيقـاف تشغيـل الموسيـقـى فـي المكالمـة مـؤقتـاً</b>
 
-cresume
+/cresume
 <b>- لـ إسـتـئـنـاف تـشغـيـل الـمـوسـيـقـى فـي المكـالمـة</b>
 
-cskip
+/cskip
 <b>- لـ تخطـي الاغنيـة وتشغيـل الاغنيـة التاليـه</b>
 """,
        reply_markup=InlineKeyboardMarkup(
