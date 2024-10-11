@@ -18,7 +18,7 @@ async def welcome_new_member(client: Client, message):
         welcome_text = f"""
 𝐰𝐞𝐥𝐜𝐨𝐦𝐞 𝐭𝐨 𝐭𝐡𝐞 𝐠𝐫𝐨𝐮𝐩.🧸
 
-#{chat_name}_
+__#{chat_name}__
 
 ➥• Welcome  : {first_name} 
 ➥• User : @{username if username else 'No username'}  
