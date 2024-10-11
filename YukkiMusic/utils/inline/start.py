@@ -43,6 +43,12 @@ def private_panel(_, BOT_USERNAME, OWNER: Union[bool, int] = None):
         buttons.append(
             [
                 InlineKeyboardButton(text="المطور", user_id=OWNER),
+                #InlineKeyboardButton(text=CHANNEL_NAME, url=lnk),
+            ]
+        )
+        buttons.append(
+            [
+                #InlineKeyboardButton(text="المطور", user_id=OWNER),
                 InlineKeyboardButton(text=CHANNEL_NAME, url=lnk),
             ]
         )
