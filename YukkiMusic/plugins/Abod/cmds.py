@@ -13,9 +13,7 @@ lnk= "https://t.me/" +config.CHANNEL_LINK
 
 @app.on_message(filters.regex(r"^(اوامر الميوزك|ميوزك|الاوامر|الميوزك|اوامر ميوزك)$"))
 async def zdatsr(client: Client, message: Message):
-    usr = await client.get_users(OWNER_ID)
-    name = usr.first_name
-    usrnam = usr.username
+    
     await message.reply_photo(
         photo=START_IMG_URL,
         caption=f"""<b>⟡ منور يحبي باوامر الميوزك .</b>\n\n<b>⟡ استخدم الازرار الي تحت .\n⟡ عشان تشوف اوامر الميوزك يعيني .</b>""",
