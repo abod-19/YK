@@ -31,14 +31,14 @@ def private_panel(_, BOT_USERNAME, OWNER: Union[bool, int] = None):
     buttons = [
         [InlineKeyboardButton(text="الأوامر", callback_data="prvett")]
     ]
-    buttons.append(
-        [
-            InlineKeyboardButton(
-                text=_["S_B_5"],
-                url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
-            )
-        ]
-    )
+    #buttons.append(
+        #[
+            #InlineKeyboardButton(
+               # text=_["S_B_5"],
+             #   url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
+          #  )
+       # ]
+   # )
     if lnk and OWNER:
         buttons.append(
             [
@@ -67,6 +67,15 @@ def private_panel(_, BOT_USERNAME, OWNER: Union[bool, int] = None):
                     InlineKeyboardButton(text="المطور", user_id=OWNER),
                 ]
             )
+
+    buttons.append(
+        [
+            InlineKeyboardButton(
+                text=_["S_B_5"],
+                url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
+            )
+        ]
+    )
     return buttons
 
 
