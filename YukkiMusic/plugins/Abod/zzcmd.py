@@ -11,7 +11,7 @@ import config
 
 lnk= "https://t.me/" +config.CHANNEL_LINK
                                        
-@app.on_callback_query(filters.regex("zzzback") & filters.group)
+@app.on_callback_query(filters.regex("zzzback"))
 async def zzzback(_, query: CallbackQuery):
    await query.edit_message_text(
        f"""<b>⟡ منور يحبي باوامر الميوزك .</b>\n\n<b>⟡ استخدم الازرار الي تحت .\n⟡ عشان تشوف اوامر الميوزك يعيني .</b>""",
@@ -38,7 +38,7 @@ async def zzzback(_, query: CallbackQuery):
 
 
 @app.on_callback_query(filters.regex("prvett") & filters.private)
-async def zzzback(_, query: CallbackQuery):
+async def prvett(_, query: CallbackQuery):
    await query.edit_message_text(
        f"""<b>اهلين فيـك عمـري في بوت لين ♪
 
@@ -72,7 +72,7 @@ async def zzzback(_, query: CallbackQuery):
 
 
 @app.on_callback_query(filters.regex("aprvett"))
-async def zzzback(_, query: CallbackQuery):
+async def aprvett(_, query: CallbackQuery):
    await query.edit_message_text(
        f"""اهلين فيـك عمـري في بوت {app.mention} ♪
 
