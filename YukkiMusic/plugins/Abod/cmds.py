@@ -7,7 +7,7 @@ from strings.filters import command
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup
 from pyrogram.errors import MessageNotModified
 from YukkiMusic import app
-from config import OWNER_ID, START_IMG_URL
+from config import START_IMG_URL
 import config
 lnk= "https://t.me/" +config.CHANNEL_LINK
 
