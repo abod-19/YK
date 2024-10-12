@@ -1,3 +1,4 @@
+"""
 import random
 from pyrogram import Client, filters
 from YukkiMusic.core.userbot import Userbot
@@ -46,3 +47,4 @@ async def on_left_chat_member(client: Client, message: Message):
         )
         await userbot.one.start()
         await userbot.one.leave_chat(chat_id)
+"""
