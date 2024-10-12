@@ -25,7 +25,7 @@ async def welcome_new_member(client: Client, message):
             ]]
     )       
     for new_member in message.new_chat_members:
-        first_name = new_member.first_name  # اسم العضو الجديد
+        first_name = new_member.mention  # اسم العضو الجديد
         username = new_member.username  # يوزر العضو الجديد
         # الحصول على الوقت الحالي
         now = datetime.utcnow()  # استخدام الوقت العالمي UTC
@@ -65,16 +65,17 @@ __{chat_name}__
 
 @app.on_message(filters.left_chat_member)
 async def leftmem(client, message):
-    gti = message.chat.title
+    chat = await app.get_chat(message.chat.id)
+    gti = chat.title
     link = await app.export_chat_invite_link(message.chat.id)
 
-    user_id = message.from_user.id
+    user_id = message.left_chat_member.id
 
     chat_id = message.chat.id
     async for member in client.get_chat_members(chat_id):
         if member.status == ChatMemberStatus.OWNER:  # جلب منشئ المجموعة فقط
             owner_id = member.user.id
-            owner_name = member.user.mention
+            owner_name = member.user.first_name
 
     buttons = [
         [
