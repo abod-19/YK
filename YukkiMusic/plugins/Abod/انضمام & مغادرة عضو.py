@@ -65,19 +65,40 @@ __{chat_name}__
 
 @app.on_message(filters.left_chat_member)
 async def leftmem(client, message):
-    logging.info("A member left the group")  # التحقق من تنفيذ الكود
+    print("A member left the group")
+    logging.info("A member left the group")
     
     chat = await app.get_chat(message.chat.id)
     gti = chat.title
-    link = await app.export_chat_invite_link(message.chat.id)
+    
+    try:
+        link = await app.export_chat_invite_link(message.chat.id)
+    except Exception as e:
+        logging.error(f"Error exporting chat invite link: {e}")
+        print(f"Error exporting chat invite link: {e}")
+        return
 
     user_id = message.left_chat_member.id
 
     chat_id = message.chat.id
-    async for member in client.get_chat_members(chat_id):
-        if member.status == ChatMemberStatus.OWNER:  # جلب منشئ المجموعة فقط
-            owner_id = member.user.id
-            owner_name = member.user.first_name
+    owner_id = None
+    owner_name = None
+
+    try:
+        async for member in client.get_chat_members(chat_id):
+            if member.status == ChatMemberStatus.OWNER:
+                owner_id = member.user.id
+                owner_name = member.user.first_name
+                break
+    except Exception as e:
+        logging.error(f"Error fetching chat members: {e}")
+        print(f"Error fetching chat members: {e}")
+        return
+
+    if not owner_id:
+        logging.error("Owner not found in the group.")
+        print("Owner not found in the group.")
+        return
 
     buttons = [
         [
@@ -87,12 +108,15 @@ async def leftmem(client, message):
         ],
     ]
     reply_markup = InlineKeyboardMarkup(buttons)
-    
-    await app.send_message(user_id, f"<b>• في امان الله ياعيوني يا 〖 {message.left_chat_member.mention} ⁪⁬⁮⁮⁮⁮〗.\n</b>"
-                                    f"<b>• اذا فكرت ترجع قروبنا {gti}\n</b>"
-                                    f"<b>• اذا كان سبب مغادرتك ازعاج من مشرف\n</b>"
-                                    f"<b>• يمكنك تقديم شكوه للمالك  والرجوع للجروب\n</b>"
-                                    f"<b>• من خلال الازرار بالاسفل 🧚🏻‍♀️</b>"
-                                    f"<a href='{link}'>ㅤ</a>",
-                                    reply_markup=reply_markup)
-    
+
+    try:
+        await app.send_message(user_id, f"<b>• في امان الله ياعيوني يا 〖 {message.left_chat_member.mention} ⁪⁬⁮⁮⁮⁮〗.\n</b>"
+                                        f"<b>• اذا فكرت ترجع قروبنا {gti}\n</b>"
+                                        f"<b>• اذا كان سبب مغادرتك ازعاج من مشرف\n</b>"
+                                        f"<b>• يمكنك تقديم شكوه للمالك  والرجوع للجروب\n</b>"
+                                        f"<b>• من خلال الازرار بالاسفل 🧚🏻‍♀️</b>"
+                                        f"<a href='{link}'>ㅤ</a>",
+                                        reply_markup=reply_markup)
+    except Exception as e:
+        logging.error(f"Error sending message: {e}")
+        print(f"Error sending message: {e}")
