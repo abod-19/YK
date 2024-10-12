@@ -66,7 +66,7 @@ __{chat_name}__
 @app.on_message(filters.left_chat_member)
 async def leftmem(client, message):
     gti = message.chat.title
-    link = await app.export_chat_invite_link(chat)
+    link = await app.export_chat_invite_link(message.chat.id)
 
     user_id = message.from_user.id
 
@@ -74,7 +74,7 @@ async def leftmem(client, message):
     async for member in client.get_chat_members(chat_id):
         if member.status == ChatMemberStatus.OWNER:  # جلب منشئ المجموعة فقط
             owner_id = member.user.id
-            owner_name = member.user.first_name
+            owner_name = member.user.mention
 
     buttons = [
         [
@@ -86,10 +86,10 @@ async def leftmem(client, message):
     reply_markup = InlineKeyboardMarkup(buttons)
     
     await app.send_message(user_id, f"<b>• في امان الله ياعيوني يا 〖 {message.from_user.mention} ⁪⁬⁮⁮⁮⁮〗.\n</b>"
-                                    f"<b>• اذا فكرت ترجع قروبنا {git}\n</b>"
+                                    f"<b>• اذا فكرت ترجع قروبنا {gti}\n</b>"
                                     f"<b>• اذا كان سبب مغادرتك ازعاج من مشرف\n</b>"
                                     f"<b>• يمكنك تقديم شكوه للمالك  والرجوع للجروب\n</b>"
                                     f"<b>• من خلال الازرار بالاسفل 🧚🏻‍♀️</b>"
-                                    f"<a href='{link}'>‌</a>",
+                                    f"<a href='{link}'>ㅤ</a>",
                                     reply_markup=reply_markup)
     
