@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 from YukkiMusic import app
 from pyrogram.enums import ChatMemberStatus
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
-
+import logging
 
 
 @app.on_message(filters.new_chat_members)
@@ -65,6 +65,8 @@ __{chat_name}__
 
 @app.on_message(filters.left_chat_member)
 async def leftmem(client, message):
+    logging.info("A member left the group")  # التحقق من تنفيذ الكود
+    
     chat = await app.get_chat(message.chat.id)
     gti = chat.title
     link = await app.export_chat_invite_link(message.chat.id)
