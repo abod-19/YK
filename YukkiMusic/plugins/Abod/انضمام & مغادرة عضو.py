@@ -63,60 +63,61 @@ __{chat_name}__
             await message.reply_text(welcome_text, reply_markup=keyboard)
 
 
-@app.on_message(filters.left_chat_member)
+@app.on_message(filters.group)
 async def leftmem(client, message):
-    print("A member left the group")
-    logging.info("A member left the group")
-    
-    chat = await app.get_chat(message.chat.id)
-    gti = chat.title
-    
-    try:
-        link = await app.export_chat_invite_link(message.chat.id)
-    except Exception as e:
-        logging.error(f"Error exporting chat invite link: {e}")
-        print(f"Error exporting chat invite link: {e}")
-        return
+    if message.left_chat_member:  # التحقق إذا كان هناك شخص غادر المجموعة
+        print("A member left the group")
+        logging.info("A member left the group")
+        
+        chat = await app.get_chat(message.chat.id)
+        gti = chat.title
+        
+        try:
+            link = await app.export_chat_invite_link(message.chat.id)
+        except Exception as e:
+            logging.error(f"Error exporting chat invite link: {e}")
+            print(f"Error exporting chat invite link: {e}")
+            return
 
-    user_id = message.left_chat_member.id
+        user_id = message.left_chat_member.id
 
-    chat_id = message.chat.id
-    owner_id = None
-    owner_name = None
+        chat_id = message.chat.id
+        owner_id = None
+        owner_name = None
 
-    try:
-        async for member in client.get_chat_members(chat_id):
-            if member.status == ChatMemberStatus.OWNER:
-                owner_id = member.user.id
-                owner_name = member.user.first_name
-                break
-    except Exception as e:
-        logging.error(f"Error fetching chat members: {e}")
-        print(f"Error fetching chat members: {e}")
-        return
+        try:
+            async for member in client.get_chat_members(chat_id):
+                if member.status == ChatMemberStatus.OWNER:
+                    owner_id = member.user.id
+                    owner_name = member.user.first_name
+                    break
+        except Exception as e:
+            logging.error(f"Error fetching chat members: {e}")
+            print(f"Error fetching chat members: {e}")
+            return
 
-    if not owner_id:
-        logging.error("Owner not found in the group.")
-        print("Owner not found in the group.")
-        return
+        if not owner_id:
+            logging.error("Owner not found in the group.")
+            print("Owner not found in the group.")
+            return
 
-    buttons = [
-        [
-            InlineKeyboardButton(f"{owner_name}", url=f"tg://openmessage?user_id={owner_id}")
-        ],[
-            InlineKeyboardButton(gti, url=f"{link}")
-        ],
-    ]
-    reply_markup = InlineKeyboardMarkup(buttons)
+        buttons = [
+            [
+                InlineKeyboardButton(f"{owner_name}", url=f"tg://openmessage?user_id={owner_id}")
+            ],[
+                InlineKeyboardButton(gti, url=f"{link}")
+            ],
+        ]
+        reply_markup = InlineKeyboardMarkup(buttons)
 
-    try:
-        await app.send_message(user_id, f"<b>• في امان الله ياعيوني يا 〖 {message.left_chat_member.mention} ⁪⁬⁮⁮⁮⁮〗.\n</b>"
-                                        f"<b>• اذا فكرت ترجع قروبنا {gti}\n</b>"
-                                        f"<b>• اذا كان سبب مغادرتك ازعاج من مشرف\n</b>"
-                                        f"<b>• يمكنك تقديم شكوه للمالك  والرجوع للجروب\n</b>"
-                                        f"<b>• من خلال الازرار بالاسفل 🧚🏻‍♀️</b>"
-                                        f"<a href='{link}'>ㅤ</a>",
-                                        reply_markup=reply_markup)
-    except Exception as e:
-        logging.error(f"Error sending message: {e}")
-        print(f"Error sending message: {e}")
+        try:
+            await app.send_message(user_id, f"<b>• في امان الله ياعيوني يا 〖 {message.left_chat_member.mention} ⁪⁬⁮⁮⁮⁮〗.\n</b>"
+                                            f"<b>• اذا فكرت ترجع قروبنا {gti}\n</b>"
+                                            f"<b>• اذا كان سبب مغادرتك ازعاج من مشرف\n</b>"
+                                            f"<b>• يمكنك تقديم شكوه للمالك  والرجوع للجروب\n</b>"
+                                            f"<b>• من خلال الازرار بالاسفل 🧚🏻‍♀️</b>"
+                                            f"<a href='{link}'>ㅤ</a>",
+                                            reply_markup=reply_markup)
+        except Exception as e:
+            logging.error(f"Error sending message: {e}")
+            print(f"Error sending message: {e}")
