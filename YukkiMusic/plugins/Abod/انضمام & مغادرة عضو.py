@@ -1,10 +1,10 @@
 import asyncio
 from pyrogram import Client, filters
-from datetime import datetime
+from datetime import datetime, timedelta
 from YukkiMusic import app
 from pyrogram.enums import ChatMemberStatus
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
-import pytz
+
 
 
 @app.on_message(filters.new_chat_members)
@@ -27,12 +27,14 @@ async def welcome_new_member(client: Client, message):
     for new_member in message.new_chat_members:
         first_name = new_member.first_name  # اسم العضو الجديد
         username = new_member.username  # يوزر العضو الجديد
-        # تحديد المنطقة الزمنية لليمن
-        yemen_tz = pytz.timezone('Asia/Aden')
+        # الحصول على الوقت الحالي
+        now = datetime.utcnow()  # استخدام الوقت العالمي UTC
+        # تعديل الوقت ليصبح حسب التوقيت اليمني (UTC +3)
+        yemen_time = now + timedelta(hours=3)
 
-        # الحصول على الوقت والتاريخ في اليمن
-        join_time = datetime.now(yemen_tz).strftime("%I:%M %p")  # الوقت بصيغة 12 ساعة مع AM/PM
-        join_date = datetime.now(yemen_tz).strftime("%Y/%m/%d")  # التاريخ بصيغة YYYY/MM/DD
+        # تنسيق الوقت والتاريخ
+        join_time = yemen_time.strftime("%I:%M %p")  # الوقت بصيغة 12 ساعة مع AM/PM
+        join_date = yemen_time.strftime("%Y/%m/%d")  # التاريخ بصيغة YYYY/MM/DD
 
         # إنشاء النص الترحيبي
         welcome_text = f"""
