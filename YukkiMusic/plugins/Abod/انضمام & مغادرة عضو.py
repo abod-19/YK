@@ -75,10 +75,10 @@ async def leftmem(client, message):
 
     buttons = [
         [
-            InlineKeyboardButton(gti, url=f"{link}")
-        ],[
             InlineKeyboardButton(f"{owner_name}", url=f"tg://openmessage?user_id={owner_id}")
-        ]
+        ],[
+            InlineKeyboardButton(gti, url=f"{link}")
+        ],
     ]
     reply_markup = InlineKeyboardMarkup(buttons)
     
@@ -87,6 +87,7 @@ async def leftmem(client, message):
                         f"<b>• اذا فكرت ترجع قروبنا {git}\n</b>"
                         f"<b>• اذا كان سبب مغادرتك ازعاج من مشرف\n</b>"
                         f"<b>• يمكنك تقديم شكوه للمالك  والرجوع للجروب\n</b>"
-                        f"<b>• من خلال الازرار بالاسفل 🧚🏻‍♀️\n</b>",
+                        f"<b>• من خلال الازرار بالاسفل 🧚🏻‍♀️</b>"
+                        f"<a href='{link}'>‌</a>",
                         reply_markup=reply_markup)
     
