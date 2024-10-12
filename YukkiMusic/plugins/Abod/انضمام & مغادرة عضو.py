@@ -86,7 +86,7 @@ async def leftmem(client, message):
     ]
     reply_markup = InlineKeyboardMarkup(buttons)
     
-    await app.send_message(user_id, f"<b>• في امان الله ياعيوني يا 〖 {message.from_user.mention} ⁪⁬⁮⁮⁮⁮〗.\n</b>"
+    await app.send_message(user_id, f"<b>• في امان الله ياعيوني يا 〖 {message.left_chat_member.mention} ⁪⁬⁮⁮⁮⁮〗.\n</b>"
                                     f"<b>• اذا فكرت ترجع قروبنا {gti}\n</b>"
                                     f"<b>• اذا كان سبب مغادرتك ازعاج من مشرف\n</b>"
                                     f"<b>• يمكنك تقديم شكوه للمالك  والرجوع للجروب\n</b>"
