@@ -18,7 +18,7 @@ client = Client(
   in_memory=True
 )
 
-await client.start()
+client.start()
 def time_to_seconds(time):
     stringt = str(time)
     return sum(
