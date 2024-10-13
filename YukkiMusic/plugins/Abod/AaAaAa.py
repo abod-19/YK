@@ -1,3 +1,4 @@
+"""
 import yt_dlp, os, re, time, random , redis, json
 from yt_dlp import YoutubeDL
 from kvsqlite.sync import Client as Database
@@ -276,3 +277,4 @@ async def video_down(c, query):
  
 if __name__ == "__main__":
      idle()
+"""
