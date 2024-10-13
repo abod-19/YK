@@ -1,4 +1,3 @@
-"""
 import os
 import re
 import requests
@@ -7,7 +6,7 @@ import yt_dlp
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from youtube_search import YoutubeSearch
-from YukkiMusic.platforms.Youtube import cookies
+#from YukkiMusic.platforms.Youtube import cookies
 from YukkiMusic import app
 from YukkiMusic.plugins.play.filters import command
 
@@ -60,7 +59,9 @@ async def song_downloader(client, message: Message):
         "geo_bypass": True,
         "outtmpl": f"{title_clean}.%(ext)s",  # استخدام اسم نظيف للملف
         "quiet": True,
-        "cookiefile": cookies(),
+        #"cookiefile": cookies(),
+        'username': 'oauth2',
+        'password': '',
     }
 
     try:
@@ -90,23 +91,6 @@ async def song_downloader(client, message: Message):
                 ]
             ),
         )
-
-        await app.send_audio(
-            chat_id="@IC_l9",  # معرف القناة التي تريد الإرسال إليها 
-            audio=audio_file,
-            caption=f"⟡ {app.mention}",
-            title=title,
-            performer=info_dict.get("uploader", "Unknown"),
-            thumb=thumb_name,
-            duration=dur,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton(text=config.CHANNEL_NAME, url=lnk),
-                    ],
-                ]
-            ),
-        )
         await m.delete()
 
     except Exception as e:
@@ -119,4 +103,3 @@ async def song_downloader(client, message: Message):
         remove_if_exists(thumb_name)
     except Exception as e:
         print(e)
-"""
