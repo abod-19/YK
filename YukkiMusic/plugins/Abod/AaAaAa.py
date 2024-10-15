@@ -31,7 +31,7 @@ def time_to_seconds(time):
 @client.on_message(filters.text & filters.group, group=1)
 async def ytdownloaderHandler(c, m):
     k = "⇜"
-    channel = "RaaD"
+    channel = "IC_l9"
     await yt_func(c, m, k, channel)
 
 
