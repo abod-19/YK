@@ -9,9 +9,12 @@
 #
 import asyncio
 import sys
+
 from pyrogram import Client
-from ..logging import LOGGER
+
 import config
+
+from ..logging import LOGGER
 
 assistants = []
 assistantids = []
@@ -34,19 +37,11 @@ class Userbot(Client):
             self.clients.append(client)
 
     async def _start(self, client, index):
-        LOGGER(__name__).info("\n- جاري تشغيل المساعد...")
+        LOGGER(__name__).info("Starting Assistant Clients")
         try:
             await client.start()
-            try:
-                await client.join_chat("EF_19")
-                await client.join_chat("GY_19")
-                await client.join_chat("WG_19")
-            except:
-                pass
-
-            assistants.append(index)  # Mark the assistant as active
-
-            await client.send_message(config.LOG_GROUP_ID, "تم تشغيل المساعد")
+            assistants.append(index)
+            await client.send_message(config.LOG_GROUP_ID, "Assistant Started")
 
             get_me = await client.get_me()
             client.username = get_me.username
@@ -70,7 +65,5 @@ class Userbot(Client):
 
     async def stop(self):
         """Gracefully stop all clients."""
-        LOGGER(__name__).info("Stopping all assistant clients...")
         tasks = [client.stop() for client in self.clients]
         await asyncio.gather(*tasks)
-        LOGGER(__name__).info("All assistant clients stopped.")
