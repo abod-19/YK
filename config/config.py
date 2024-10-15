@@ -270,6 +270,11 @@ SPOTIFY_PLAYLIST_IMG_URL = getenv(
 )
 
 
+def time_to_seconds(time):
+    stringt = str(time)
+    return sum(int(x) * 60**i for i, x in enumerate(reversed(stringt.split(":"))))
+
+
 def seconds_to_time(seconds):
     minutes = seconds // 60
     remaining_seconds = seconds % 60
