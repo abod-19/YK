@@ -11,7 +11,7 @@ from pyrogram import filters
 from pyrogram.errors import ChannelInvalid
 from pyrogram.types import Message
 
-from strings import get_command
+from strings import command, get_command
 from YukkiMusic import app
 from YukkiMusic.misc import SUDOERS, db
 from YukkiMusic.utils.database.memorydatabase import (
@@ -24,7 +24,7 @@ from YukkiMusic.utils.database.memorydatabase import (
 # Commands
 ACTIVEVC_COMMAND = get_command("ACTIVEVC_COMMAND")
 ACTIVEVIDEO_COMMAND = get_command("ACTIVEVIDEO_COMMAND")
-
+AC_COMMAND = get_command("AC_COMMAND")
 
 # Function for removing the Active voice and video chat also clear the db dictionary for the chat
 async def _clear_(chat_id):
