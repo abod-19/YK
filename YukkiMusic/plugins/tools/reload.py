@@ -24,7 +24,7 @@ from YukkiMusic.utils.formatters import alpha_to_int
 RELOAD_COMMAND = get_command("RELOAD_COMMAND")
 
 
-@app.on_message(filters.command("/admincache", "/reload", "/refresh","ريلود"],"") & filters.group & ~BANNED_USERS)
+@app.on_message(filters.command(["/admincache", "/reload", "/refresh","ريلود"],"") & filters.group & ~BANNED_USERS)
 @language
 async def reload_admin_cache(client, message: Message, _):
     try:
