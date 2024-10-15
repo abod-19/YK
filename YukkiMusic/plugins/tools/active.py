@@ -94,13 +94,13 @@ async def vc(client, message: Message):
     await message.reply_text(f"المحادثات النشطة : {ac_audio}")
 
 
-__MODULE__ = "Acᴛɪᴠᴇ"
-__HELP__ = """
-<b>✧ /ac</b> - Cʜᴇᴄᴋ ᴀᴄᴛɪᴠᴇ ᴠᴏɪᴄᴇ ᴄʜᴀᴛs ᴏɴ ʙᴏᴛ.
+__MODULE__ = "Active"
+__HELP__ = f"""
+<b>✧ {command("AC_COMMAND")}</b> - Check active voice chats on the bot.
 
-<b>✧ /activevoice</b> - Cʜᴇᴄᴋ ᴀᴄᴛɪᴠᴇ ᴠᴏɪᴄᴇ ᴄʜᴀᴛs ᴀɴᴅ ᴠɪᴅᴇᴏ ᴄᴀʟʟs ᴏɴ ʙᴏᴛ.
+<b>✧ {command("ACTIVEVC_COMMAND")}</b> - Check active voice and video calls on the bot.
 
-<b>✧ /activevideo</b> - Cʜᴇᴄᴋ ᴀᴄᴛɪᴠᴇ ᴠɪᴅᴇᴏ ᴄᴀʟʟs ᴏɴ ʙᴏᴛ.
+<b>✧ {command("ACTIVEVIDEO_COMMAND")}</b> - Check active video calls on the bot.
 
-<b>✧ /stats</b> - Cʜᴇᴄᴋ Bᴏᴛs Sᴛᴀᴛs
+<b>✧ {command("STATS_COMMAND")}</b> - Check bot stats.
 """
