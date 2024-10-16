@@ -137,7 +137,7 @@ async def yt_func(c, m, k, channel):
             return True
 
 
-@client.on_callback_query(filters.regex("GET"))
+@app.on_callback_query(filters.regex("GET"))
 async def get_info(c, query):
     await getInfo(c, query)
 
@@ -170,7 +170,7 @@ async def getInfo(c, query):
     )
 
 
-@client.on_callback_query(filters.regex("AUDIO"))
+@app.on_callback_query(filters.regex("AUDIO"))
 async def get_audii(c, query):
     await audio_down(c, query)
 
@@ -216,7 +216,7 @@ async def audio_down(c, query):
     os.remove(audio_file)
 
 
-@client.on_callback_query(filters.regex("VIDEO"))
+@app.on_callback_query(filters.regex("VIDEO"))
 async def get_video(c, query):
     await video_down(c, query)
 
