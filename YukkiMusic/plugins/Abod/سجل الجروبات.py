@@ -18,7 +18,7 @@ photo_urls = [
 @app.on_message(filters.new_chat_members & filters.group)
 async def welcome_new_member(client: Client, message: Message):
     chat = message.chat
-    dev_id = OWNER_ID
+    dev_id = OWNER_ID[0]
     bot_id = (await client.get_me()).id
 
     for new_member in message.new_chat_members:
