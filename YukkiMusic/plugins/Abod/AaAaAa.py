@@ -6,6 +6,7 @@ from pyrogram import *
 from pyrogram.enums import *
 from pyrogram.types import *
 from config import BOT_TOKEN, OWNER_ID
+from YukkiMusic import app 
 
 
 r = redis.Redis('localhost', decode_responses=True)
@@ -13,12 +14,12 @@ ytdb = Database("youtubeDB.sqlite")
 ZAID = OWNER_ID
 TOKEN = BOT_TOKEN
 Dev_Zaid = TOKEN.split(":")[0]
-client = Client(
-    "ytZAID", 17954744, "7ad6189ad04c5d3a698b1b541e62c42b", bot_token=TOKEN,
-    in_memory=True
-)
+#client = Client(
+    #"ytZAID", 17954744, "7ad6189ad04c5d3a698b1b541e62c42b", bot_token=TOKEN,
+    #in_memory=True
+#)
 
-client.start()
+#client.start()
 
 
 def time_to_seconds(time):
@@ -28,7 +29,7 @@ def time_to_seconds(time):
     )
 
 
-@client.on_message(filters.text & filters.group, group=1)
+@app.on_message(filters.text & filters.group, group=1)
 async def ytdownloaderHandler(c, m):
     k = "⇜"
     channel = "IC_l9"
