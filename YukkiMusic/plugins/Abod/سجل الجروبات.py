@@ -1,9 +1,9 @@
 import random
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
-from ZeMusic import app
-from ZeMusic.utils.database import get_served_chats
-from config import OWNER_ID, LOGGER_ID
+from YukkiMusic import app
+from YukkiMusic.utils.database import get_served_chats
+from config import OWNER_ID, LOG_GROUP_ID
 from pyrogram.enums import ChatMemberStatus
 from datetime import datetime, timedelta
 
