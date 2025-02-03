@@ -19,12 +19,12 @@ from yt_dlp import YoutubeDL
 from pyrogram.enums import MessageEntityType
 from pyrogram.types import Message
 from youtubesearchpython.__future__ import VideosSearch
-
+from youtube_search import YoutubeSearch
 import config
 from YukkiMusic.utils.database import is_on_off
 from YukkiMusic.utils.decorators import asyncify
 from YukkiMusic.utils.formatters import seconds_to_min, time_to_seconds
-
+from pySmartDL import SmartDL
 
 def cookies():
     folder_path = f"{os.getcwd()}/cookies"
@@ -99,12 +99,12 @@ class YouTube:
             link = self.base + link
         if "&" in link:
             link = link.split("&")[0]
-        results = VideosSearch(link, limit=1)
-        for result in (await results.next())["result"]:
+        results = YoutubeSearch(link, max_results=1).to_dict()
+        for result in results:
             title = result["title"]
             duration_min = result["duration"]
-            thumbnail = result["thumbnails"][0]["url"].split("?")[0]
             vidid = result["id"]
+            thumbnail = f"https://img.youtube.com/vi/{vidid}/hqdefault.jpg"
             if str(duration_min) == "None":
                 duration_sec = 0
             else:
@@ -117,10 +117,8 @@ class YouTube:
             link = self.base + link
         if "&" in link:
             link = link.split("&")[0]
-        results = VideosSearch(link, limit=1)
-        for result in (await results.next())["result"]:
-            title = result["title"]
-        return title
+        results = YoutubeSearch(link, max_results=1).to_dict()
+        return results[0]["title"]
 
     @alru_cache(maxsize=None)
     async def duration(self, link: str, videoid: Union[bool, str] = None):
@@ -128,9 +126,8 @@ class YouTube:
             link = self.base + link
         if "&" in link:
             link = link.split("&")[0]
-        results = VideosSearch(link, limit=1)
-        for result in (await results.next())["result"]:
-            duration = result["duration"]
+        results = YoutubeSearch(link, max_results=1).to_dict()
+        duration = results[0]["duration"]
         return duration
 
     @alru_cache(maxsize=None)
@@ -139,9 +136,8 @@ class YouTube:
             link = self.base + link
         if "&" in link:
             link = link.split("&")[0]
-        results = VideosSearch(link, limit=1)
-        for result in (await results.next())["result"]:
-            thumbnail = result["thumbnails"][0]["url"].split("?")[0]
+        result = YoutubeSearch(link, max_results=1).to_dict()
+        thumbnail = f"https://img.youtube.com/vi/{result[0]['id']}/hqdefault.jpg"
         return thumbnail
 
     async def video(self, link: str, videoid: Union[bool, str] = None):
@@ -199,13 +195,13 @@ class YouTube:
         if link.startswith("http://") or link.startswith("https://"):
             return await self._track(link)
         try:
-            results = VideosSearch(link, limit=1)
-            for result in (await results.next())["result"]:
+            results = YoutubeSearch(link, max_results=1).to_dict()
+            for result in results:
                 title = result["title"]
                 duration_min = result["duration"]
                 vidid = result["id"]
-                yturl = result["link"]
-                thumbnail = result["thumbnails"][0]["url"].split("?")[0]
+                yturl = f"https://youtube.com{result['url_suffix']}"
+                thumbnail = f"https://img.youtube.com/vi/{vidid}/hqdefault.jpg"
             track_details = {
                 "title": title,
                 "link": yturl,
@@ -303,8 +299,48 @@ class YouTube:
         vidid = result[query_type]["id"]
         thumbnail = result[query_type]["thumbnails"][0]["url"].split("?")[0]
         return title, duration_min, thumbnail, vidid
-        
+
     async def download(
+        self,
+        link: str,
+        mystic,
+        video: Union[bool, str] = None,
+        videoid: Union[bool, str] = None,
+        songaudio: Union[bool, str] = None,
+        songvideo: Union[bool, str] = None,
+        format_id: Union[bool, str] = None,
+        title: Union[bool, str] = None,
+    ):
+        if os.path.exists(f"downloads/{link.replace(self.base, '')}.mp3"):
+            return f"downloads/{link.replace(self.base, '')}.mp3", True
+        async with aiohttp.ClientSession() as session:
+            async with session.get(f"https://youtube.virs.tech/vi/{link.replace(self.base, '')}?key=3ec1818f-f3bc-4da2-a259-48ae227d5955") as response:
+                data = await response.json()
+            streaming_data = data.get("streaming_data", [])
+            highest_bitrate = 0
+            for item in streaming_data:
+                if item.get("width") == 0 and item.get("height") == 0:
+                    bitrate = item.get("bitrate", 0)
+                    if bitrate > highest_bitrate:
+                        highest_bitrate = bitrate
+                        audio_url, stream_url = item.get("url"), item.get("restream")
+            try:
+                file = SmartDL(audio_url, f"downloads/{link.replace(self.base, '')}.mp3", progress_bar=False)
+                file.start(blocking=False)
+                if file.filesize == 0:
+                    return None
+                while not file.isFinished():
+                    await asyncio.sleep(.5)
+            except Exception as e: 
+                file = SmartDL(stream_url, f"downloads/{link.replace(self.base, '')}.mp3", progress_bar=False)
+                file.start(blocking=False)
+                if file.filesize == 0:
+                    return None
+                while not file.isFinished():
+                    await asyncio.sleep(.5)
+        return f"downloads/{link.replace(self.base, '')}.mp3", True
+
+    async def _download(
         self,
         link: str,
         mystic,
